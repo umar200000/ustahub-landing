@@ -1,0 +1,37 @@
+services:
+  landing-frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: https://ustahub.net/api
+    container_name: ustahub-landing-frontend
+    ports:
+      - "3002:3000"
+    restart: unless-stopped
+    networks:
+      - landing_network
+
+  landing-backend:
+    build:
+      context: ./backend
+    container_name: ustahub-landing-backend
+    ports:
+      - "5001:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - DB_PATH=/app/data/ustahub.db
+    volumes:
+      - landing_db_data:/app/data
+      - landing_uploads:/app/uploads
+    restart: unless-stopped
+    networks:
+      - landing_network
+
+networks:
+  landing_network:
+    driver: bridge
+
+volumes:
+  landing_db_data:
+  landing_uploads:
