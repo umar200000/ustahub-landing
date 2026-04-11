@@ -28,9 +28,7 @@ export default function Home() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-primary-900 to-gray-900">
         <div className="text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse">
-            <span className="text-white font-bold text-2xl">U</span>
-          </div>
+          <img src="/logo.png" alt="UstaHub" className="w-16 h-16 rounded-2xl mx-auto mb-6 animate-pulse object-contain" />
           <div className="flex gap-1 justify-center">
             {[0, 1, 2].map(i => (
               <div

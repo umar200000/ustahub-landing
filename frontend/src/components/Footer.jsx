@@ -78,9 +78,7 @@ export default function Footer({ settings = {}, appLinks = [], lang = 'uz' }) {
           {/* Brand */}
           <div className="col-span-2 md:col-span-4 lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-lg">U</span>
-              </div>
+              <img src="/logo.png" alt="UstaHub" className="w-10 h-10 rounded-xl object-contain" />
               <span className="text-xl font-bold">Usta<span className="text-primary-400">Hub</span></span>
             </div>
             <p className="text-gray-400 text-sm mb-6 max-w-sm">

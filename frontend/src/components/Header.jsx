@@ -49,9 +49,7 @@ export default function Header({ settings = {}, lang = 'uz', onLangChange }) {
               className="flex items-center gap-2 group"
               whileHover={{ scale: 1.02 }}
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/30">
-                <span className="text-white font-bold text-lg">U</span>
-              </div>
+              <img src="/logo.png" alt="UstaHub" className="w-10 h-10 rounded-xl shadow-lg shadow-primary-500/30 object-contain" />
               <span className={`text-xl font-bold transition-colors ${scrolled ? 'text-gray-900' : 'text-white'}`}>
                 Usta<span className="text-primary-500">Hub</span>
               </span>
