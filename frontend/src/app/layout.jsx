@@ -4,6 +4,10 @@ export const metadata = {
   title: 'UstaHub — Ishonchli ustalar platformasi',
   description: 'UstaHub — minglab professional ustalar bir joyda. Qurilishdan go\'zallikkacha, barcha xizmatlarni oson buyurtma qiling.',
   keywords: 'ustalar, xizmatlar, qurilish, ta\'mirlash, Uzbekistan, UstaHub',
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({ children }) {
