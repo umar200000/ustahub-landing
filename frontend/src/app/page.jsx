@@ -62,6 +62,7 @@ export default function Home() {
 
   return (
     <main>
+      <h1>UstaHub Test</h1>
       <Header settings={data.settings} lang={lang} onLangChange={setLang} />
       <Hero data={data.hero} lang={lang} />
       <Stats data={data.stats} lang={lang} />
