@@ -175,12 +175,12 @@ insertFaq.run(
 db.prepare('DELETE FROM settings').run();
 const insertSetting = db.prepare('INSERT INTO settings (key, value) VALUES (?, ?)');
 insertSetting.run('site_name', 'UstaHub');
-insertSetting.run('phone', '+998 (55) 514 22 55');
-insertSetting.run('email', 'info@ustahub.uz');
+insertSetting.run('phone', '+998971379722');
+insertSetting.run('email', 'company@ustahub.net');
 insertSetting.run('address_uz', 'Toshkent shahri, Chilonzor tumani');
 insertSetting.run('address_ru', 'г. Ташкент, Чиланзарский район');
 insertSetting.run('address_en', 'Tashkent city, Chilanzar district');
-insertSetting.run('telegram', 'https://t.me/ustahub');
+insertSetting.run('telegram', 'https://t.me/ustahub_net');
 insertSetting.run('instagram', 'https://instagram.com/ustahub');
 insertSetting.run('facebook', 'https://facebook.com/ustahub');
 insertSetting.run('youtube', 'https://youtube.com/@ustahub');

@@ -37,10 +37,22 @@ export async function adminLogin(username, password) {
   return res.json();
 }
 
+async function handleResponse(res, fallback) {
+  if (!res.ok) {
+    let message = fallback;
+    try {
+      const body = await res.json();
+      if (body?.error) message = body.error;
+    } catch {}
+    if (res.status === 401) message = 'Sessiya tugagan. Qayta login qiling.';
+    throw new Error(`${message} (${res.status})`);
+  }
+  return res.json();
+}
+
 export async function adminFetch(endpoint) {
   const res = await fetch(`${ADMIN_API}/${endpoint}`, { headers: authHeaders() });
-  if (!res.ok) throw new Error('Fetch failed');
-  return res.json();
+  return handleResponse(res, 'Fetch failed');
 }
 
 export async function adminPost(endpoint, data) {
@@ -49,8 +61,7 @@ export async function adminPost(endpoint, data) {
     headers: authHeaders(),
     body: JSON.stringify(data),
   });
-  if (!res.ok) throw new Error('Create failed');
-  return res.json();
+  return handleResponse(res, 'Create failed');
 }
 
 export async function adminPut(endpoint, data) {
@@ -59,8 +70,7 @@ export async function adminPut(endpoint, data) {
     headers: authHeaders(),
     body: JSON.stringify(data),
   });
-  if (!res.ok) throw new Error('Update failed');
-  return res.json();
+  return handleResponse(res, 'Update failed');
 }
 
 export async function adminDelete(endpoint) {
@@ -68,6 +78,5 @@ export async function adminDelete(endpoint) {
     method: 'DELETE',
     headers: authHeaders(),
   });
-  if (!res.ok) throw new Error('Delete failed');
-  return res.json();
+  return handleResponse(res, 'Delete failed');
 }

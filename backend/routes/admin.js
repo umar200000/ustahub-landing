@@ -209,13 +209,24 @@ router.get('/settings', authMiddleware, (req, res) => {
 });
 
 router.put('/settings', authMiddleware, (req, res) => {
-  const update = db.prepare('INSERT OR REPLACE INTO settings (key, value, updated_at) VALUES (?, ?, CURRENT_TIMESTAMP)');
-  const entries = Object.entries(req.body);
-  const transaction = db.transaction(() => {
-    entries.forEach(([key, value]) => update.run(key, value));
-  });
-  transaction();
-  res.json({ success: true });
+  try {
+    if (!req.body || typeof req.body !== 'object') {
+      return res.status(400).json({ error: 'Invalid body' });
+    }
+    const update = db.prepare('INSERT OR REPLACE INTO settings (key, value, updated_at) VALUES (?, ?, CURRENT_TIMESTAMP)');
+    const entries = Object.entries(req.body);
+    const transaction = db.transaction(() => {
+      entries.forEach(([key, value]) => {
+        const safe = value == null ? '' : String(value);
+        update.run(key, safe);
+      });
+    });
+    transaction();
+    res.json({ success: true });
+  } catch (err) {
+    console.error('PUT /settings error:', err);
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // ============ APP LINKS ============
