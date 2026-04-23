@@ -11,22 +11,29 @@ export default function AppDownload({ appLinks = [], lang = 'uz' }) {
       title: 'Ilovani yuklab oling',
       subtitle: "Bizning ilovamiz — sizning cho'ntagingizda shaxsiy yordamchi. Istalgan vaqtda, istalgan joyda usta toping.",
       badge: 'Mobil ilova',
+      soon: '10-may 2026-dan',
     },
     ru: {
       title: 'Скачайте приложение',
       subtitle: 'Наше приложение — ваш личный помощник в кармане. Найдите мастера в любое время и в любом месте.',
       badge: 'Мобильное приложение',
+      soon: 'С 10 мая 2026',
     },
     en: {
       title: 'Download the app',
       subtitle: 'Our app is your personal assistant in your pocket. Find a master anytime, anywhere.',
       badge: 'Mobile app',
+      soon: 'From May 10, 2026',
     },
   };
 
   const t = titles[lang] || titles.uz;
-  const iosLink = appLinks.find(l => l.platform === 'ios')?.url || '#';
-  const androidLink = appLinks.find(l => l.platform === 'android')?.url || '#';
+
+  const scrollToCountdown = (e) => {
+    e.preventDefault();
+    const el = document.getElementById('launch-countdown');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const benefits = {
     uz: ['Tezkor qidiruv', 'Xavfsiz to\'lov', 'Real-time bildirishnomalar'],
@@ -109,13 +116,15 @@ export default function AppDownload({ appLinks = [], lang = 'uz' }) {
                 className="flex flex-wrap gap-4"
               >
                 <motion.a
-                  href={iosLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#launch-countdown"
+                  onClick={scrollToCountdown}
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex items-center gap-3 px-6 py-3.5 bg-white rounded-2xl hover:bg-gray-50 transition-colors shadow-lg"
+                  className="relative flex items-center gap-3 px-6 py-3.5 bg-white rounded-2xl hover:bg-gray-50 transition-colors shadow-lg"
                 >
+                  <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded-full bg-accent-500 text-[10px] font-bold text-white shadow-lg">
+                    {t.soon}
+                  </span>
                   <svg className="w-8 h-8 text-gray-900" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                   </svg>
@@ -126,13 +135,15 @@ export default function AppDownload({ appLinks = [], lang = 'uz' }) {
                 </motion.a>
 
                 <motion.a
-                  href={androidLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#launch-countdown"
+                  onClick={scrollToCountdown}
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex items-center gap-3 px-6 py-3.5 bg-white rounded-2xl hover:bg-gray-50 transition-colors shadow-lg"
+                  className="relative flex items-center gap-3 px-6 py-3.5 bg-white rounded-2xl hover:bg-gray-50 transition-colors shadow-lg"
                 >
+                  <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded-full bg-accent-500 text-[10px] font-bold text-white shadow-lg">
+                    {t.soon}
+                  </span>
                   <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
                     <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/>
                     <path d="M17.556 8.222L5.89.95a1.003 1.003 0 00-1.063-.029l9.58 9.58 3.15-2.28z" fill="#EA4335"/>

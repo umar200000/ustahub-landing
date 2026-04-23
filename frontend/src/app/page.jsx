@@ -8,6 +8,7 @@ import Categories from '@/components/Categories';
 import HowItWorks from '@/components/HowItWorks';
 import Features from '@/components/Features';
 import AppDownload from '@/components/AppDownload';
+import LaunchCountdown from '@/components/LaunchCountdown';
 import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
@@ -70,6 +71,7 @@ export default function Home() {
       <Features data={data.features} lang={lang} />
       <Testimonials data={data.testimonials} lang={lang} />
       <AppDownload appLinks={data.appLinks} lang={lang} />
+      <LaunchCountdown lang={lang} />
       <FAQ data={data.faq} lang={lang} />
       <Footer settings={data.settings} appLinks={data.appLinks} lang={lang} />
     </main>
