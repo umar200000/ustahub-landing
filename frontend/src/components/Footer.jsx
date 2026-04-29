@@ -1,25 +1,71 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, ArrowUp, Send } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Footer({ settings = {}, appLinks = [], lang = 'uz' }) {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const footerLinks = {
     uz: {
-      company: { title: 'Kompaniya', items: ['Biz haqimizda', 'Qanday ishlaydi', 'Blog', 'Bog\'lanish'] },
-      services: { title: 'Xizmatlar', items: ['Qurilish', 'Avto xizmatlar', 'Texnika', 'Go\'zallik'] },
-      support: { title: 'Yordam', items: ['FAQ', 'Qoidalar', 'Maxfiylik', 'Aloqa'] },
+      company: { title: 'Kompaniya', items: [
+        { label: 'Biz haqimizda', href: '#' },
+        { label: 'Qanday ishlaydi', href: '#how-it-works' },
+        { label: 'Blog', href: '#' },
+        { label: 'Bog\'lanish', href: '#' },
+      ]},
+      services: { title: 'Xizmatlar', items: [
+        { label: 'Qurilish', href: '#categories' },
+        { label: 'Avto xizmatlar', href: '#categories' },
+        { label: 'Texnika', href: '#categories' },
+        { label: 'Go\'zallik', href: '#categories' },
+      ]},
+      support: { title: 'Yordam', items: [
+        { label: 'FAQ', href: '#faq' },
+        { label: 'Qoidalar', href: '#' },
+        { label: 'Maxfiylik', href: '/privacy-policy' },
+        { label: 'Aloqa', href: '#' },
+      ]},
     },
     ru: {
-      company: { title: 'Компания', items: ['О нас', 'Как работает', 'Блог', 'Связаться'] },
-      services: { title: 'Услуги', items: ['Строительство', 'Авто услуги', 'Техника', 'Красота'] },
-      support: { title: 'Помощь', items: ['FAQ', 'Правила', 'Конфиденциальность', 'Контакты'] },
+      company: { title: 'Компания', items: [
+        { label: 'О нас', href: '#' },
+        { label: 'Как работает', href: '#how-it-works' },
+        { label: 'Блог', href: '#' },
+        { label: 'Связаться', href: '#' },
+      ]},
+      services: { title: 'Услуги', items: [
+        { label: 'Строительство', href: '#categories' },
+        { label: 'Авто услуги', href: '#categories' },
+        { label: 'Техника', href: '#categories' },
+        { label: 'Красота', href: '#categories' },
+      ]},
+      support: { title: 'Помощь', items: [
+        { label: 'FAQ', href: '#faq' },
+        { label: 'Правила', href: '#' },
+        { label: 'Конфиденциальность', href: '/privacy-policy' },
+        { label: 'Контакты', href: '#' },
+      ]},
     },
     en: {
-      company: { title: 'Company', items: ['About us', 'How it works', 'Blog', 'Contact'] },
-      services: { title: 'Services', items: ['Construction', 'Auto services', 'Tech', 'Beauty'] },
-      support: { title: 'Support', items: ['FAQ', 'Terms', 'Privacy', 'Contact'] },
+      company: { title: 'Company', items: [
+        { label: 'About us', href: '#' },
+        { label: 'How it works', href: '#how-it-works' },
+        { label: 'Blog', href: '#' },
+        { label: 'Contact', href: '#' },
+      ]},
+      services: { title: 'Services', items: [
+        { label: 'Construction', href: '#categories' },
+        { label: 'Auto services', href: '#categories' },
+        { label: 'Tech', href: '#categories' },
+        { label: 'Beauty', href: '#categories' },
+      ]},
+      support: { title: 'Support', items: [
+        { label: 'FAQ', href: '#faq' },
+        { label: 'Terms', href: '#' },
+        { label: 'Privacy', href: '/privacy-policy' },
+        { label: 'Contact', href: '#' },
+      ]},
     },
   };
 
@@ -119,9 +165,9 @@ export default function Footer({ settings = {}, appLinks = [], lang = 'uz' }) {
               <ul className="space-y-3">
                 {col.items.map((item, j) => (
                   <li key={j}>
-                    <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
-                      {item}
-                    </a>
+                    <Link href={item.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
