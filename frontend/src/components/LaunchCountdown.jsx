@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Rocket, Calendar, Bell } from 'lucide-react';
 
-const LAUNCH_DATE = new Date('2026-05-10T00:00:00+05:00').getTime();
+const LAUNCH_DATE = new Date('2026-06-01T00:00:00+05:00').getTime();
 
 function getTimeLeft() {
   const diff = LAUNCH_DATE - Date.now();
@@ -21,36 +21,36 @@ function getTimeLeft() {
 const copy = {
   uz: {
     badge: "Tez kunda ishga tushamiz",
-    title: 'Ilova 10-may 2026-yildan ishlay boshlaydi',
-    subtitle: "UstaHub ilovasi rasmiy ravishda 10-may kuni ishga tushadi. Shu sanadan boshlab siz ilovani App Store va Google Play'dan yuklab olib, eng yaxshi ustalarni toposiz.",
+    title: 'Ilova 1-iyun 2026-yildan ishlay boshlaydi',
+    subtitle: "UstaHub ilovasi rasmiy ravishda 1-iyun kuni ishga tushadi. Shu sanadan boshlab siz ilovani App Store va Google Play'dan yuklab olib, eng yaxshi ustalarni toposiz.",
     days: 'Kun',
     hours: 'Soat',
     minutes: 'Daqiqa',
     seconds: 'Soniya',
     launched: 'UstaHub ishga tushdi! 🎉',
-    date: '10-may 2026',
+    date: '1-iyun 2026',
   },
   ru: {
     badge: 'Скоро запуск',
-    title: 'Приложение запускается 10 мая 2026 года',
-    subtitle: 'Приложение UstaHub официально запускается 10 мая. С этого дня вы сможете скачать его в App Store и Google Play и найти лучших мастеров.',
+    title: 'Приложение запускается 1 июня 2026 года',
+    subtitle: 'Приложение UstaHub официально запускается 1 июня. С этого дня вы сможете скачать его в App Store и Google Play и найти лучших мастеров.',
     days: 'Дней',
     hours: 'Часов',
     minutes: 'Минут',
     seconds: 'Секунд',
     launched: 'UstaHub запущен! 🎉',
-    date: '10 мая 2026',
+    date: '1 июня 2026',
   },
   en: {
     badge: 'Launching soon',
-    title: 'The app launches on May 10, 2026',
-    subtitle: 'UstaHub officially launches on May 10. From that day, download it from the App Store and Google Play to find the best masters around you.',
+    title: 'The app launches on June 1, 2026',
+    subtitle: 'UstaHub officially launches on June 1. From that day, download it from the App Store and Google Play to find the best masters around you.',
     days: 'Days',
     hours: 'Hours',
     minutes: 'Minutes',
     seconds: 'Seconds',
     launched: 'UstaHub is live! 🎉',
-    date: 'May 10, 2026',
+    date: 'June 1, 2026',
   },
 };
 

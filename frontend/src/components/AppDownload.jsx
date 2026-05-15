@@ -11,19 +11,19 @@ export default function AppDownload({ appLinks = [], lang = 'uz' }) {
       title: 'Ilovani yuklab oling',
       subtitle: "Bizning ilovamiz — sizning cho'ntagingizda shaxsiy yordamchi. Istalgan vaqtda, istalgan joyda usta toping.",
       badge: 'Mobil ilova',
-      soon: '10-may 2026-dan',
+      soon: '1-iyun 2026-dan',
     },
     ru: {
       title: 'Скачайте приложение',
       subtitle: 'Наше приложение — ваш личный помощник в кармане. Найдите мастера в любое время и в любом месте.',
       badge: 'Мобильное приложение',
-      soon: 'С 10 мая 2026',
+      soon: 'С 1 июня 2026',
     },
     en: {
       title: 'Download the app',
       subtitle: 'Our app is your personal assistant in your pocket. Find a master anytime, anywhere.',
       badge: 'Mobile app',
-      soon: 'From May 10, 2026',
+      soon: 'From June 1, 2026',
     },
   };
 
