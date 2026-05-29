@@ -5,7 +5,7 @@ import { getToken, adminLogin } from '@/lib/api';
 import {
   LayoutDashboard, Image, BarChart3, FolderOpen, ListOrdered,
   Sparkles, MessageSquare, HelpCircle, Settings, Smartphone,
-  LogOut, Menu, X, ChevronRight
+  LogOut, Menu, X, ChevronRight, Zap
 } from 'lucide-react';
 
 const menuItems = [
@@ -18,6 +18,7 @@ const menuItems = [
   { path: '/admin/testimonials', label: 'Sharhlar', icon: MessageSquare },
   { path: '/admin/faq', label: 'FAQ', icon: HelpCircle },
   { path: '/admin/settings', label: 'Sozlamalar', icon: Settings },
+  { path: '/admin/express-services', label: 'Express Narxlar', icon: Zap },
 ];
 
 export default function AdminLayout({ children }) {

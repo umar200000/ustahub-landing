@@ -80,3 +80,57 @@ export async function adminDelete(endpoint) {
   });
   return handleResponse(res, 'Delete failed');
 }
+
+// ─── UstaHub Backend (superadmin) API ────────────────────────────────────────
+
+const USTAHUB_API = process.env.NEXT_PUBLIC_USTAHUB_API_URL || 'http://localhost:8000/api/v1';
+
+export function getUstahubToken() {
+  if (typeof window !== 'undefined') return localStorage.getItem('ustahub_admin_token');
+  return null;
+}
+
+export function setUstahubToken(token) {
+  if (typeof window !== 'undefined') localStorage.setItem('ustahub_admin_token', token);
+}
+
+export function clearUstahubToken() {
+  if (typeof window !== 'undefined') localStorage.removeItem('ustahub_admin_token');
+}
+
+function ustahubHeaders() {
+  return {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${getUstahubToken()}`,
+  };
+}
+
+export async function ustahubLogin(login, password) {
+  const res = await fetch(`${USTAHUB_API}/superadmin/auth/login/`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ login, password }),
+  });
+  if (!res.ok) throw new Error('Login failed');
+  const data = await res.json();
+  if (data?.data?.access_token) setUstahubToken(data.data.access_token);
+  return data;
+}
+
+export async function ustahubFetch(endpoint) {
+  const res = await fetch(`${USTAHUB_API}/${endpoint}`, { headers: ustahubHeaders() });
+  if (res.status === 401) { clearUstahubToken(); throw new Error('SESSION_EXPIRED'); }
+  if (!res.ok) throw new Error(`Fetch failed (${res.status})`);
+  return res.json();
+}
+
+export async function ustahubPatch(endpoint, data) {
+  const res = await fetch(`${USTAHUB_API}/${endpoint}`, {
+    method: 'PATCH',
+    headers: ustahubHeaders(),
+    body: JSON.stringify(data),
+  });
+  if (res.status === 401) { clearUstahubToken(); throw new Error('SESSION_EXPIRED'); }
+  if (!res.ok) throw new Error(`Update failed (${res.status})`);
+  return res.json();
+}
