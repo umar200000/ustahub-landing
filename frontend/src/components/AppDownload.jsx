@@ -29,12 +29,6 @@ export default function AppDownload({ appLinks = [], lang = 'uz' }) {
 
   const t = titles[lang] || titles.uz;
 
-  const scrollToCountdown = (e) => {
-    e.preventDefault();
-    const el = document.getElementById('launch-countdown');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   const benefits = {
     uz: ['Tezkor qidiruv', 'Xavfsiz to\'lov', 'Real-time bildirishnomalar'],
     ru: ['Быстрый поиск', 'Безопасная оплата', 'Уведомления в реальном времени'],
@@ -133,15 +127,13 @@ export default function AppDownload({ appLinks = [], lang = 'uz' }) {
                 </motion.a>
 
                 <motion.a
-                  href="#launch-countdown"
-                  onClick={scrollToCountdown}
+                  href="https://play.google.com/store/apps/details?id=net.ustahub.client"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   className="relative flex items-center gap-3 px-6 py-3.5 bg-white rounded-2xl hover:bg-gray-50 transition-colors shadow-lg"
                 >
-                  <span className="absolute -top-2 -right-2 px-2 py-0.5 rounded-full bg-accent-500 text-[10px] font-bold text-white shadow-lg">
-                    {t.soon}
-                  </span>
                   <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
                     <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/>
                     <path d="M17.556 8.222L5.89.95a1.003 1.003 0 00-1.063-.029l9.58 9.58 3.15-2.28z" fill="#EA4335"/>
