@@ -165,6 +165,26 @@ export default function MasterPage() {
             </span>
           </a>
 
+          {/* Center nav */}
+          <nav className="hidden lg:flex items-center gap-1">
+            {[
+              { label: 'Bu qanday ishlaydi', href: '#how' },
+              { label: 'Tokenlar', href: '#tokens' },
+              { label: 'Tezkor Xizmat', href: '#tezkor' },
+              { label: 'Savol-javob', href: '#faq' },
+            ].map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${
+                  scrolled ? 'text-gray-600 hover:bg-gray-100 hover:text-primary-600' : 'text-white/90 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="/"
@@ -369,7 +389,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ How it works ═══ */}
-      <section ref={howRef.ref} className="py-20 bg-white">
+      <section id="how" ref={howRef.ref} className="py-20 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -539,7 +559,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ Tezkor Xizmat + Referral ═══ */}
-      <section ref={duoRef.ref} className="py-12 bg-white">
+      <section id="tezkor" ref={duoRef.ref} className="py-12 bg-white scroll-mt-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
           {/* Tezkor Xizmat */}
           <motion.div
@@ -722,7 +742,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ FAQ ═══ */}
-      <section ref={faqRef.ref} className="relative py-24 overflow-hidden">
+      <section id="faq" ref={faqRef.ref} className="relative py-24 overflow-hidden scroll-mt-20">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-950 via-[#011f21] to-gray-950" />
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: 'radial-gradient(circle, rgba(2,189,198,0.5) 1px, transparent 1px)',
@@ -837,10 +857,10 @@ export default function MasterPage() {
               <span className="text-lg font-bold text-white">Usta<span className="text-primary-400">Hub</span></span>
             </a>
             <nav className="flex flex-wrap gap-x-6 gap-y-2 md:mx-auto text-sm">
-              <a href="#" className="hover:text-white transition-colors">Bu qanday ishlaydi</a>
+              <a href="#how" className="hover:text-white transition-colors">Bu qanday ishlaydi</a>
               <a href="#tokens" className="hover:text-white transition-colors">Tokenlar</a>
-              <a href="#" className="hover:text-white transition-colors">Tezkor Xizmat</a>
-              <a href="#" className="hover:text-white transition-colors">Savol-javob</a>
+              <a href="#tezkor" className="hover:text-white transition-colors">Tezkor Xizmat</a>
+              <a href="#faq" className="hover:text-white transition-colors">Savol-javob</a>
             </nav>
             <div className="flex items-center gap-3">
               <a href="https://t.me/ustahub_net" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-primary-500/20 flex items-center justify-center hover:text-primary-400 transition-all">
