@@ -175,7 +175,7 @@ insertFaq.run(
 db.prepare('DELETE FROM settings').run();
 const insertSetting = db.prepare('INSERT INTO settings (key, value) VALUES (?, ?)');
 insertSetting.run('site_name', 'UstaHub');
-insertSetting.run('phone', '+998971379722');
+insertSetting.run('phone', '+998 (99) 783 01 23');
 insertSetting.run('email', 'company@ustahub.net');
 insertSetting.run('address_uz', 'Toshkent shahri, Chilonzor tumani');
 insertSetting.run('address_ru', 'г. Ташкент, Чиланзарский район');

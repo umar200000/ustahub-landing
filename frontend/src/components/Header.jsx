@@ -74,12 +74,10 @@ export default function Header({ settings = {}, lang = 'uz', onLangChange }) {
             {/* Right side */}
             <div className="hidden lg:flex items-center gap-3">
               {/* Phone */}
-              {settings.phone && (
-                <a href={`tel:${settings.phone}`} className={`flex items-center gap-2 text-sm font-medium ${scrolled ? 'text-gray-700' : 'text-white/90'}`}>
-                  <Phone size={16} />
-                  {settings.phone}
-                </a>
-              )}
+              <a href="tel:+998997830123" className={`flex items-center gap-2 text-sm font-medium ${scrolled ? 'text-gray-700' : 'text-white/90'}`}>
+                <Phone size={16} />
+                +998 (99) 783 01 23
+              </a>
 
               {/* Become a master */}
               <motion.a

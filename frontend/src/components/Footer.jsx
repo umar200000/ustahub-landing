@@ -140,12 +140,10 @@ export default function Footer({ settings = {}, appLinks = [], lang = 'uz' }) {
 
             {/* Contact info */}
             <div className="space-y-3">
-              {settings.phone && (
-                <a href={`tel:${settings.phone}`} className="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
-                  <Phone size={16} className="text-primary-400" />
-                  {settings.phone}
-                </a>
-              )}
+              <a href="tel:+998997830123" className="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
+                <Phone size={16} className="text-primary-400" />
+                +998 (99) 783 01 23
+              </a>
               {settings.email && (
                 <a href={`mailto:${settings.email}`} className="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
                   <Mail size={16} className="text-primary-400" />
