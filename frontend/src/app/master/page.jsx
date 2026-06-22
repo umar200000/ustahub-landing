@@ -379,7 +379,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ How it works ═══ */}
-      <section id="how" ref={howRef.ref} className="relative overflow-hidden py-20 bg-white scroll-mt-20">
+      <section id="how" ref={howRef.ref} className="relative isolate overflow-hidden py-20 bg-white scroll-mt-20">
         <SectionDecor />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -427,7 +427,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ How to get tokens ═══ */}
-      <section id="tokens" ref={tokRef.ref} className="relative overflow-hidden py-20 bg-white scroll-mt-20">
+      <section id="tokens" ref={tokRef.ref} className="relative isolate overflow-hidden py-20 bg-white scroll-mt-20">
         {/* master illustration as backdrop (left) */}
         <img
           src="/images/master/token-bg.png"
@@ -478,7 +478,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ Deadline ═══ */}
-      <section ref={dlRef.ref} className="relative overflow-hidden py-20 bg-white">
+      <section ref={dlRef.ref} className="relative isolate overflow-hidden py-20 bg-white">
         <SectionDecor />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
@@ -488,7 +488,7 @@ export default function MasterPage() {
           >
             Nega 20-iyulgacha ro&apos;yxatdan o&apos;tish kerak
           </motion.h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {deadlineFeats.map((f, i) => (
               <motion.div
                 key={i}
@@ -510,7 +510,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ What are tokens + Request types ═══ */}
-      <section ref={infoRef.ref} className="relative overflow-hidden py-20 bg-gray-50">
+      <section ref={infoRef.ref} className="relative isolate overflow-hidden py-20 bg-gray-50">
         <SectionDecor flip />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-6">
           {/* What are tokens */}
@@ -581,7 +581,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ Tezkor Xizmat + Referral ═══ */}
-      <section id="tezkor" ref={duoRef.ref} className="relative overflow-hidden py-12 bg-white scroll-mt-20">
+      <section id="tezkor" ref={duoRef.ref} className="relative isolate overflow-hidden py-12 bg-white scroll-mt-20">
         <SectionDecor />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
           {/* Tezkor Xizmat */}
@@ -706,7 +706,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ Guides ═══ */}
-      <section ref={guideRef.ref} className="relative overflow-hidden py-20 bg-gray-50">
+      <section ref={guideRef.ref} className="relative isolate overflow-hidden py-20 bg-gray-50">
         <SectionDecor flip />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -746,7 +746,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ Spheres ═══ */}
-      <section ref={sphRef.ref} className="relative overflow-hidden py-20 bg-white">
+      <section ref={sphRef.ref} className="relative isolate overflow-hidden py-20 bg-white">
         <SectionDecor />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -854,7 +854,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section id="download" ref={ctaRef.ref} className="relative overflow-hidden py-20 bg-white scroll-mt-20">
+      <section id="download" ref={ctaRef.ref} className="relative isolate overflow-hidden py-20 bg-white scroll-mt-20">
         <SectionDecor flip />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
