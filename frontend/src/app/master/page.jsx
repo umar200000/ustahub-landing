@@ -1,13 +1,12 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
   HardHat, Coins, PlayCircle, Calendar, Users,
-  Fingerprint, UserCog, Camera, PackageCheck, ShoppingBag, ImagePlus, UserCheck,
   Rocket, ShieldCheck, CheckCircle2, Zap, Handshake, Gift, Timer,
   BookOpen, Video, Newspaper, ChevronRight, Wrench, Sparkles, Paintbrush, Hammer,
-  Car, Sofa, Package, Plus, Minus, Send, Home, Briefcase, Repeat, MessageCircle,
+  Car, Sofa, Package, Plus, Minus, Send, Home, Briefcase, Repeat, MessageCircle, ArrowRight,
 } from 'lucide-react';
 
 // App store links (UstaHub Pro — the master app)
@@ -69,17 +68,17 @@ const heroIcons = [
 ];
 
 const steps = [
-  { icon: Fingerprint, title: "myID dan o'ting", desc: 'Shaxsingizni myID orqali tez va xavfsiz tasdiqlang.' },
-  { icon: UserCog, title: "Profilni to'ldiring", desc: "Tajriba, foto, xizmatlar va ish hududlarini qo'shing." },
-  { icon: Camera, title: "Ish fotolarini qo'shing", desc: "Portfolioyingizni ko'rsating — ko'proq ishonch, ko'proq buyurtma." },
-  { icon: PackageCheck, title: 'Birinchi buyurtmalarni oling', desc: "Moderatsiyadan keyin buyurtma olib, token to'plashni boshlang." },
+  { img: '/images/master/step-myid.png', title: "myID dan o'ting", desc: 'Shaxsingizni myID orqali tez va xavfsiz tasdiqlang.' },
+  { img: '/images/master/step-profile.png', title: "Profilni to'ldiring", desc: "O'zingiz haqingizda gapiring, ko'nikma va tajriba qo'shing." },
+  { img: '/images/master/step-camera.png', title: "Ish fotolarini qo'shing", desc: "Eng yaxshi ishlaringizni ko'rsating — mijozlar sizga ishonadi." },
+  { img: '/images/master/step-check.png', title: 'Birinchi buyurtmalarni oling', desc: "Ishga tushgandan so'ng mijozlar sizni topadi va buyurtma qoldiradi." },
 ];
 
 const tokenRows = [
-  { icon: Coins, title: 'Profil uchun bonus', desc: "Usta profilini ajratib ko'rsatish uchun bonus", amount: '+150' },
-  { icon: UserCheck, title: "To'ldirilgan profil", desc: "Profil 80% gacha to'ldirilgandan so'ng", amount: '+40' },
-  { icon: ImagePlus, title: 'Ish fotolari', desc: "Ish fotolari yuklangandan so'ng (kamida 3 ta)", amount: '+30' },
-  { icon: ShoppingBag, title: 'Birinchi buyurtmalar', desc: "Birinchi 3 ta buyurtmadan so'ng", amount: '+30' },
+  { img: '/images/master/token-stack-shield.png', amount: '+150', desc: "myID tasdiqlangandan so'ng" },
+  { img: '/images/master/token-profile.png', amount: '+40', desc: "Profil to'ldirilgandan so'ng" },
+  { img: '/images/master/token-camera.png', amount: '+30', desc: "Ish fotolari yuklangandan so'ng" },
+  { img: '/images/master/token-bag.png', amount: '+30', desc: "Birinchi 3 ta buyurtmadan so'ng" },
 ];
 
 const deadlineFeats = [
@@ -397,7 +396,6 @@ export default function MasterPage() {
             <div className="hidden lg:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-primary-200 via-teal-200 to-emerald-200" />
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {steps.map((step, i) => {
-                const Icon = step.icon;
                 return (
                   <motion.div
                     key={i}
@@ -408,10 +406,10 @@ export default function MasterPage() {
                   >
                     <div className="relative inline-flex mb-6">
                       <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        className="w-20 h-20 rounded-3xl bg-primary-50 flex items-center justify-center ring-4 ring-primary-100 relative z-10 group-hover:shadow-lg transition-all duration-300"
+                        whileHover={{ scale: 1.1 }}
+                        className="w-24 h-24 rounded-full bg-primary-50 flex items-center justify-center ring-4 ring-primary-100/60 relative z-10 group-hover:shadow-lg transition-all duration-300"
                       >
-                        <Icon size={32} className="text-primary-500" />
+                        <img src={step.img} alt="" className="w-14 h-14 object-contain" />
                       </motion.div>
                       <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg z-20">
                         {i + 1}
@@ -429,7 +427,7 @@ export default function MasterPage() {
 
       {/* ═══ How to get tokens ═══ */}
       <section id="tokens" ref={tokRef.ref} className="py-20 bg-gray-50 scroll-mt-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={tokRef.inView ? { opacity: 1, y: 0 } : {}}
@@ -445,32 +443,28 @@ export default function MasterPage() {
             </p>
           </motion.div>
 
-          <div className="space-y-4">
-            {tokenRows.map((row, i) => {
-              const Icon = row.icon;
-              return (
+          <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4 lg:gap-2">
+            {tokenRows.map((row, i) => (
+              <Fragment key={i}>
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={tokRef.inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  whileHover={{ y: -3 }}
-                  className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-md transition-all"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={tokRef.inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: i * 0.12 }}
+                  whileHover={{ y: -4 }}
+                  className="flex-1 flex flex-col items-center text-center bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center flex-shrink-0">
-                    <Icon size={22} className="text-primary-500" />
+                  <div className="w-20 h-20 rounded-2xl bg-primary-50 flex items-center justify-center mb-4">
+                    <img src={row.img} alt="" className="w-12 h-12 object-contain" />
                   </div>
-                  <div className="min-w-0">
-                    <h3 className="font-bold text-gray-900">{row.title}</h3>
-                    <p className="text-sm text-gray-500">{row.desc}</p>
-                  </div>
-                  <div className="ml-auto text-right flex-shrink-0">
-                    <div className="text-2xl sm:text-3xl font-extrabold text-accent-500 leading-none">{row.amount}</div>
-                    <div className="text-[11px] font-bold text-accent-500 tracking-wider">TOKEN</div>
-                  </div>
+                  <div className="text-4xl font-extrabold text-primary-600 leading-none">{row.amount}</div>
+                  <div className="text-sm font-semibold text-gray-400 mt-1.5 mb-3">tokenlar</div>
+                  <p className="text-sm text-gray-500 leading-snug">{row.desc}</p>
                 </motion.div>
-              );
-            })}
+                {i < tokenRows.length - 1 && (
+                  <ArrowRight size={26} className="hidden lg:block text-primary-300 flex-shrink-0" strokeWidth={2.5} />
+                )}
+              </Fragment>
+            ))}
           </div>
         </div>
       </section>
