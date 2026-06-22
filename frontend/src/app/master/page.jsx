@@ -56,6 +56,20 @@ function StoreButtons({ className = '' }) {
   );
 }
 
+// Subtle decorative background for light sections
+function SectionDecor({ flip = false }) {
+  return (
+    <>
+      <div className="absolute inset-0 -z-10" style={{
+        backgroundImage: 'radial-gradient(circle, rgba(2,189,198,0.07) 1px, transparent 1px)',
+        backgroundSize: '30px 30px',
+      }} />
+      <div className={`absolute -z-10 w-96 h-96 rounded-full bg-primary-200/30 blur-3xl ${flip ? '-bottom-40 -left-40' : '-top-40 -right-40'}`} />
+      <div className={`absolute -z-10 w-80 h-80 rounded-full bg-teal-200/20 blur-3xl ${flip ? '-top-40 -right-32' : '-bottom-40 -left-32'}`} />
+    </>
+  );
+}
+
 // ─── Data (text identical to reference, design is ours) ──────────────────────
 
 const heroIcons = [
@@ -375,7 +389,8 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ How it works ═══ */}
-      <section id="how" ref={howRef.ref} className="py-20 bg-white scroll-mt-20">
+      <section id="how" ref={howRef.ref} className="relative overflow-hidden py-20 bg-white scroll-mt-20">
+        <SectionDecor />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -422,7 +437,8 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ How to get tokens ═══ */}
-      <section id="tokens" ref={tokRef.ref} className="py-20 bg-gray-50 scroll-mt-20">
+      <section id="tokens" ref={tokRef.ref} className="relative overflow-hidden py-20 bg-gray-50 scroll-mt-20">
+        <SectionDecor flip />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -466,7 +482,8 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ Deadline ═══ */}
-      <section ref={dlRef.ref} className="py-20 bg-white">
+      <section ref={dlRef.ref} className="relative overflow-hidden py-20 bg-white">
+        <SectionDecor />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -497,7 +514,8 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ What are tokens + Request types ═══ */}
-      <section ref={infoRef.ref} className="py-20 bg-gray-50">
+      <section ref={infoRef.ref} className="relative overflow-hidden py-20 bg-gray-50">
+        <SectionDecor flip />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-6">
           {/* What are tokens */}
           <motion.div
@@ -567,7 +585,8 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ Tezkor Xizmat + Referral ═══ */}
-      <section id="tezkor" ref={duoRef.ref} className="py-12 bg-white scroll-mt-20">
+      <section id="tezkor" ref={duoRef.ref} className="relative overflow-hidden py-12 bg-white scroll-mt-20">
+        <SectionDecor />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
           {/* Tezkor Xizmat */}
           <motion.div
@@ -691,7 +710,8 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ Guides ═══ */}
-      <section ref={guideRef.ref} className="py-20 bg-gray-50">
+      <section ref={guideRef.ref} className="relative overflow-hidden py-20 bg-gray-50">
+        <SectionDecor flip />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -730,7 +750,8 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ Spheres ═══ */}
-      <section ref={sphRef.ref} className="py-20 bg-white">
+      <section ref={sphRef.ref} className="relative overflow-hidden py-20 bg-white">
+        <SectionDecor />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -837,8 +858,9 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section id="download" ref={ctaRef.ref} className="py-20 bg-white scroll-mt-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="download" ref={ctaRef.ref} className="relative overflow-hidden py-20 bg-white scroll-mt-20">
+        <SectionDecor flip />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={ctaRef.inView ? { opacity: 1, y: 0 } : {}}
