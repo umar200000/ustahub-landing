@@ -7,7 +7,7 @@ import {
   Fingerprint, UserCog, Camera, PackageCheck, ShoppingBag, ImagePlus, UserCheck,
   Rocket, ShieldCheck, CheckCircle2, Zap, Handshake, Gift, Timer,
   BookOpen, Video, Newspaper, ChevronRight, Wrench, Sparkles, Paintbrush, Hammer,
-  Car, Sofa, Package, Plus, Minus, ArrowLeft, Send, Home,
+  Car, Sofa, Package, Plus, Minus, Send, Home, Briefcase, Repeat, MessageCircle,
 } from 'lucide-react';
 
 // App store links (UstaHub Pro — the master app)
@@ -74,18 +74,24 @@ const tokenRows = [
 ];
 
 const deadlineFeats = [
-  { icon: Rocket, text: 'Ishga tushishga tayyor profil' },
-  { icon: ShieldCheck, text: "Ko'proq ishonch va buyurtma" },
-  { icon: Users, text: 'UstaHub ustalarining birinchi to\'lqini' },
-  { icon: Coins, text: "250 token boshlang'ich bonus" },
+  { icon: Rocket, title: 'Ishga tushishga tayyor profil', desc: 'Profilingiz mijozlar kelishiga tayyor bo\'ladi.' },
+  { icon: ShieldCheck, title: 'myID tufayli yuqori ishonch', desc: 'Tekshirilgan ustalar ko\'proq ishonch uyg\'otadi.' },
+  { icon: Users, title: "UstaHub ustalarining birinchi to'lqini", desc: 'Birinchilar qatorida ko\'proq buyurtma oling.' },
+  { icon: Coins, title: "250 token boshlang'ich bonus", desc: 'Bonus birinchi buyurtmalarni olishga yordam beradi.' },
 ];
 
 const tokenInfo = [
   'Token — bu ustaning ichki valyutasi',
-  'Pullik arizalar va premium xizmatlarda yechiladi',
-  "Ular buyurtmalarni targ'ib qilish uchun kerak",
-  "Agar sarflab, aloqa chiqmasa — qo'llab-quvvatlash xizmati yordam beradi",
-  'Pullik arizalarda yechib olinadi',
+  'Ular arizalarni qabul qilish uchun kerak',
+  "Yechib olish faqat arizani qabul qilganda sodir bo'ladi",
+  "Agar mijoz aloqaga chiqmasa, qo'llab-quvvatlash xizmati yordam beradi",
+];
+
+const requestTypes = [
+  { icon: Wrench, title: 'Mayda ishlar', desc: 'Maishiy vazifalar va kichik ta\'mirlar' },
+  { icon: Zap, title: 'Tezkor Xizmat', desc: 'Yoningizdagi shoshilinch chaqiruvlar' },
+  { icon: Briefcase, title: 'Katta buyurtmalar', desc: 'Hajmli ishlar va loyihalar' },
+  { icon: Repeat, title: 'Takroriy chaqiruv', desc: 'Mijoz sizga yana murojaat qiladi' },
 ];
 
 const guides = [
@@ -109,6 +115,7 @@ const spheres = [
 const faqs = [
   { q: 'Buyurtmalar qachon kela boshlaydi?', a: "Profil moderatsiyadan o'tib tasdiqlangach, siz buyurtmalarni qabul qilishni boshlaysiz." },
   { q: 'myID nima?', a: "myID — shaxsingizni tez va xavfsiz tasdiqlash uchun rasmiy raqamli identifikatsiya tizimi." },
+  { q: '250 token qachon hisoblanadi?', a: "Tokenlar bosqichma-bosqich hisoblanadi: myID tasdiqlangach +150, profil to'ldirilgach +40, ish fotolari yuklangach +30 va birinchi 3 ta buyurtmadan so'ng +30." },
   { q: 'Tezkor Xizmat nima?', a: "Bu mijozning shoshilinch so'rovini eng yaqin va mos ustaga tezda yo'naltiruvchi xizmat." },
   { q: 'Referal tokenlarni qanday olish mumkin?', a: "Taklif havolangiz orqali ro'yxatdan o'tgan har bir usta uchun +10 token olasiz." },
 ];
@@ -259,7 +266,7 @@ export default function MasterPage() {
                 transition={{ duration: 0.6, delay: 0.18 }}
                 className="text-lg text-gray-300 leading-relaxed mb-3 max-w-xl"
               >
-                Birinchi 1 000 ta usta 250 tokendan bonus oladi.
+                Birinchi 1 000 ta usta bonusni bosqichma-bosqich oladi.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
@@ -267,7 +274,7 @@ export default function MasterPage() {
                 transition={{ duration: 0.6, delay: 0.24 }}
                 className="text-lg text-gray-300 leading-relaxed mb-8 max-w-xl"
               >
-                20-iyulgacha profilni tayyorlaymiz, moderatsiyadan o&apos;tamiz va barqaror buyurtmalar olishni boshlaymiz.
+                20-iyulgacha profillarni tayyorlaymiz, ustalarni tekshiramiz va tokenlarni hisoblaymiz. 20-iyuldan mijozlar uchun ishga tushish boshlanadi.
               </motion.p>
 
               <motion.div
@@ -296,7 +303,7 @@ export default function MasterPage() {
               >
                 <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.07] border border-white/10 text-sm text-gray-200">
                   <Calendar size={16} className="text-primary-400" />
-                  <span className="font-semibold text-white">20-iyulgacha</span>
+                  <span className="font-semibold text-white">Launch: 20-iyul</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.07] border border-white/10 text-sm text-gray-200">
                   <Users size={16} className="text-primary-400" />
@@ -448,7 +455,10 @@ export default function MasterPage() {
               <Coins size={15} />
               Bonus
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">250 tokenni qanday olish mumkin</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">250 tokenni qanday olish mumkin</h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+              Bonus bosqichma-bosqich beriladi, shunda usta o&apos;z taraqqiyotini oson kuzatadi.
+            </p>
           </motion.div>
 
           <div className="space-y-4">
@@ -516,7 +526,8 @@ export default function MasterPage() {
                       <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
                         <Icon size={20} className="text-primary-300" />
                       </div>
-                      <p className="text-sm text-white/85 leading-snug">{f.text}</p>
+                      <h3 className="text-sm font-bold text-white leading-snug">{f.title}</h3>
+                      <p className="text-sm text-white/70 leading-snug">{f.desc}</p>
                     </motion.div>
                   );
                 })}
@@ -526,9 +537,10 @@ export default function MasterPage() {
         </div>
       </section>
 
-      {/* ═══ What are tokens ═══ */}
+      {/* ═══ What are tokens + Request types ═══ */}
       <section ref={infoRef.ref} className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-6">
+          {/* What are tokens */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={infoRef.inView ? { opacity: 1, y: 0 } : {}}
@@ -540,7 +552,7 @@ export default function MasterPage() {
               </div>
               <h2 className="text-2xl font-bold text-gray-900">Token nima</h2>
             </div>
-            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+            <div className="space-y-4">
               {tokenInfo.map((item, i) => (
                 <motion.div
                   key={i}
@@ -553,6 +565,39 @@ export default function MasterPage() {
                   <span className="text-gray-700">{item}</span>
                 </motion.div>
               ))}
+            </div>
+          </motion.div>
+
+          {/* Request types */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={infoRef.inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.12 }}
+          >
+            <h2 className="text-2xl font-bold text-gray-900 text-center lg:text-left mb-6">UstaHub&apos;dagi so&apos;rov turlari</h2>
+            <div className="space-y-3">
+              {requestTypes.map((r, i) => {
+                const Icon = r.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={infoRef.inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
+                    whileHover={{ x: 3 }}
+                    className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md hover:border-primary-200 transition-all"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-primary-50 flex items-center justify-center flex-shrink-0">
+                      <Icon size={20} className="text-primary-500" />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-bold text-gray-900">{r.title}</h3>
+                      <p className="text-sm text-gray-500">{r.desc}</p>
+                    </div>
+                    <ChevronRight size={18} className="ml-auto text-gray-300 flex-shrink-0" />
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>
@@ -574,13 +619,13 @@ export default function MasterPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900">Tezkor Xizmat</h3>
             </div>
-            <p className="text-gray-500 mb-2">Daqiqalar ichida ustani shoshilinch chaqirish.</p>
+            <p className="text-gray-500 mb-2 font-medium">Daqiqalar ichida ustani shoshilinch chaqirish.</p>
             <p className="text-gray-500 mb-5">
-              Mijozda favqulodda vaziyat yuz bersa — u Tezkor Xizmatga so&apos;rov yuboradi. Shoshilinch arizalar uchun mos kelsangiz — bu sizning imkoniyatingiz!
+              Mijozda favqulodda vaziyat yuz berganda, tizim eng yaqin ustalarga so&apos;rov yuboradi. Shoshilinch ishlar uchun mos: suv, svet, tezkor ta&apos;mir.
             </p>
             <div className="rounded-2xl bg-gradient-to-br from-primary-50 to-teal-50 border border-primary-100 p-5 text-center mb-6">
               <div className="text-3xl font-extrabold text-gray-900 tracking-widest tabular-nums">02:45</div>
-              <div className="text-xs text-primary-600 font-medium mt-1">daqiqa</div>
+              <div className="text-xs text-primary-600 font-medium mt-1">Qoldi</div>
             </div>
             <a
               href="#"
@@ -714,7 +759,10 @@ export default function MasterPage() {
             animate={sphRef.inView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">UstaHub qaysi sohalar uchun mos</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">UstaHub qaysi sohalar uchun mos</h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+              Qisqa va tushunarli qo&apos;llanmalar — usta adashmasin va ishni tezroq boshlasin.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
@@ -842,7 +890,20 @@ export default function MasterPage() {
                   Hozir ro&apos;yxatdan o&apos;ting, profilni 20-iyulgacha tayyorlang va 250 token oling.
                 </p>
               </div>
-              <StoreButtons className="flex-shrink-0" />
+              <div className="flex flex-col gap-3 flex-shrink-0">
+                <StoreButtons />
+                <motion.a
+                  href="https://t.me/ustahub_net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center justify-center gap-2 px-6 py-3.5 bg-white/10 text-white font-semibold rounded-2xl border border-white/25 hover:bg-white/20 transition-all backdrop-blur-sm"
+                >
+                  <MessageCircle size={18} />
+                  Savol berish
+                </motion.a>
+              </div>
             </div>
           </motion.div>
         </div>
