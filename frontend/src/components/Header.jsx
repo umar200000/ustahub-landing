@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Globe, Phone } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe, Phone, HardHat } from 'lucide-react';
 
 const languages = [
   { code: 'uz', label: "O'zbekcha" },
@@ -80,6 +80,21 @@ export default function Header({ settings = {}, lang = 'uz', onLangChange }) {
                   {settings.phone}
                 </a>
               )}
+
+              {/* Become a master */}
+              <motion.a
+                href="/master"
+                whileHover={{ scale: 1.03, y: -1 }}
+                whileTap={{ scale: 0.97 }}
+                className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold border transition-all ${
+                  scrolled
+                    ? 'text-primary-600 border-primary-200 hover:bg-primary-50'
+                    : 'text-white border-white/30 hover:bg-white/10'
+                }`}
+              >
+                <HardHat size={16} />
+                {lang === 'ru' ? 'Стать мастером' : lang === 'en' ? 'Become a master' : "Usta bo'lish"}
+              </motion.a>
 
               {/* Language Switcher */}
               <div className="relative">
@@ -163,6 +178,14 @@ export default function Header({ settings = {}, lang = 'uz', onLangChange }) {
                   {item}
                 </motion.a>
               ))}
+              <a
+                href="/master"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2 px-4 py-3.5 text-lg font-semibold text-primary-600 border border-primary-200 rounded-xl hover:bg-primary-50 transition-all"
+              >
+                <HardHat size={20} />
+                {lang === 'ru' ? 'Стать мастером' : lang === 'en' ? 'Become a master' : "Usta bo'lish"}
+              </a>
               <div className="pt-6 space-y-3">
                 <div className="flex gap-2">
                   {languages.map(l => (
