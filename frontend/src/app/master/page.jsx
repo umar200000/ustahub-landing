@@ -427,19 +427,13 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ How to get tokens ═══ */}
-      <section id="tokens" ref={tokRef.ref} className="relative overflow-hidden py-20 bg-gradient-to-br from-[#013d40] via-[#015558] to-[#013d40] scroll-mt-20">
-        {/* dotted texture */}
-        <div className="absolute inset-0 -z-10 opacity-[0.05]" style={{
-          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)',
-          backgroundSize: '30px 30px',
-        }} />
+      <section id="tokens" ref={tokRef.ref} className="relative overflow-hidden py-20 bg-white scroll-mt-20">
         {/* master illustration as backdrop (left) */}
         <img
           src="/images/master/token-bg.png"
           alt=""
-          className="pointer-events-none select-none hidden lg:block absolute left-0 bottom-0 -z-10 h-[90%] object-contain object-left-bottom opacity-90 drop-shadow-2xl"
+          className="pointer-events-none select-none hidden lg:block absolute left-0 bottom-0 -z-10 h-[92%] object-contain object-left-bottom"
         />
-        <div className="absolute -top-24 -left-24 -z-10 w-96 h-96 rounded-full bg-primary-500/20 blur-3xl" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -447,12 +441,12 @@ export default function MasterPage() {
             animate={tokRef.inView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-12"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-400 text-gray-900 text-sm font-semibold mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-100 text-accent-600 text-sm font-semibold mb-4">
               <Coins size={15} />
               Bonus
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">250 tokenni qanday olish mumkin</h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">250 tokenni qanday olish mumkin</h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
               Bonus bosqichma-bosqich beriladi, shunda usta o&apos;z taraqqiyotini oson kuzatadi.
             </p>
           </motion.div>
