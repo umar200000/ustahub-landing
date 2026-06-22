@@ -429,23 +429,7 @@ export default function MasterPage() {
       {/* ═══ How to get tokens ═══ */}
       <section id="tokens" ref={tokRef.ref} className="relative isolate overflow-hidden py-20 bg-gradient-to-br from-gray-50 via-white to-primary-50/50 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-          {/* Left: master illustration */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={tokRef.inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="relative hidden lg:flex justify-center items-end"
-          >
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[105%] aspect-square rounded-full bg-gradient-to-br from-primary-500/10 to-teal-500/10" />
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[80%] aspect-square rounded-full bg-primary-400/15 blur-3xl" />
-            <img
-              src="/images/master/token-bg.png"
-              alt="UstaHub Pro usta"
-              className="w-full max-w-sm h-auto object-contain drop-shadow-2xl"
-            />
-          </motion.div>
-
-          {/* Right: heading + 2x2 cards */}
+          {/* Left: heading + 2x2 cards */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -482,6 +466,22 @@ export default function MasterPage() {
               ))}
             </div>
           </div>
+
+          {/* Right: master illustration */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={tokRef.inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="relative hidden lg:flex justify-center items-end order-first lg:order-last"
+          >
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[105%] aspect-square rounded-full bg-gradient-to-br from-primary-500/10 to-teal-500/10" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[80%] aspect-square rounded-full bg-primary-400/15 blur-3xl" />
+            <img
+              src="/images/master/token-bg.png"
+              alt="UstaHub Pro usta"
+              className="w-full max-w-sm h-auto object-contain drop-shadow-2xl"
+            />
+          </motion.div>
         </div>
       </section>
 
