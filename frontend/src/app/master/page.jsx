@@ -576,28 +576,70 @@ export default function MasterPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={duoRef.inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="relative bg-gradient-to-br from-[#013d40] to-[#015558] rounded-3xl p-8 overflow-hidden"
+            className="relative bg-gradient-to-br from-[#013d40] to-[#015558] rounded-3xl p-8 overflow-hidden flex flex-col"
           >
             <div className="absolute -bottom-16 -right-16 w-56 h-56 rounded-full bg-primary-500/20 blur-3xl" />
-            <div className="relative">
+            <div className="absolute inset-0 opacity-[0.05]" style={{
+              backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)',
+              backgroundSize: '26px 26px',
+            }} />
+
+            <div className="relative flex flex-col h-full">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
                   <Handshake size={22} className="text-primary-300" />
                 </div>
                 <h3 className="text-xl font-bold text-white">Referal dastur</h3>
               </div>
-              <p className="text-white/75 mb-6">Ustalarni taklif qiling — birga o&apos;samiz va birga daromad qilamiz!</p>
-              <div className="flex justify-center my-8">
+              <p className="text-white/75">Ustalarni taklif qiling — birga o&apos;samiz va birga daromad qilamiz!</p>
+
+              {/* Hero gift */}
+              <div className="flex-grow flex items-center justify-center py-8">
                 <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                  className="w-20 h-20 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="relative"
                 >
-                  <Gift size={36} className="text-primary-300" />
+                  {/* glow */}
+                  <div className="absolute inset-0 bg-primary-400/40 blur-2xl rounded-full scale-125" />
+                  {/* rotating ring */}
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+                    className="absolute -inset-4 rounded-full border border-dashed border-white/20"
+                  />
+                  {/* gift badge */}
+                  <div className="relative w-32 h-32 rounded-[2rem] bg-gradient-to-br from-primary-400 to-teal-500 flex items-center justify-center shadow-2xl shadow-primary-500/40 ring-4 ring-white/10">
+                    <Gift size={60} className="text-white" />
+                  </div>
+                  {/* floating accents */}
+                  <motion.div
+                    animate={{ y: [0, -6, 0], opacity: [0.7, 1, 0.7] }}
+                    transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute -top-3 -right-3 w-9 h-9 rounded-xl bg-accent-400 flex items-center justify-center shadow-lg text-gray-900"
+                  >
+                    <Coins size={18} />
+                  </motion.div>
+                  <motion.div
+                    animate={{ scale: [1, 1.25, 1], opacity: [0.6, 1, 0.6] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
+                    className="absolute -bottom-2 -left-4 text-accent-300"
+                  >
+                    <Sparkles size={22} />
+                  </motion.div>
+                  <motion.div
+                    animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut', delay: 1.1 }}
+                    className="absolute top-2 -left-6 text-primary-200"
+                  >
+                    <Sparkles size={14} />
+                  </motion.div>
                 </motion.div>
               </div>
-              <div className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary-500 text-white font-semibold text-sm">
-                <Coins size={16} />
+
+              {/* token badge */}
+              <div className="flex items-center justify-center gap-2 px-5 py-4 rounded-2xl bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold shadow-lg shadow-primary-500/25">
+                <Coins size={18} />
                 Har bir taklif uchun +10 token
               </div>
             </div>
