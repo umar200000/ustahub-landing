@@ -4,9 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
   HardHat, Coins, PlayCircle, Calendar, Users,
-  Rocket, CheckCircle2, Zap, Handshake, Gift,
-  BookOpen, Video, Newspaper, ChevronRight, Wrench, Sparkles, Paintbrush, Hammer,
-  Car, Sofa, Package, Plus, Minus, Send, Home, MessageCircle, ArrowRight,
+  Rocket, CheckCircle2, Zap, Handshake,
+  BookOpen, Video, Newspaper, ChevronRight,
+  Plus, Minus, Send, Home, MessageCircle, ArrowRight,
 } from 'lucide-react';
 
 // App store links (UstaHub Pro — the master app)
@@ -110,14 +110,21 @@ const guides = [
 ];
 
 const spheres = [
-  { icon: Wrench, label: 'Santexnik' },
-  { icon: Zap, label: 'Elektrik' },
-  { icon: Sparkles, label: 'Tozalash' },
-  { icon: Paintbrush, label: "Bo'yoqchi" },
-  { icon: Hammer, label: "Ta'mirlash" },
-  { icon: Car, label: 'Avto-xizmatlar' },
-  { icon: Sofa, label: 'Mebelchi' },
-  { icon: Package, label: 'Boshqa xizmatlar' },
+  { img: '/images/master/avatar-santexnik.png', label: 'Santexnik' },
+  { img: '/images/master/avatar-elektrik.png', label: 'Elektrik' },
+  { img: '/images/master/avatar-tozalash.png', label: 'Tozalash' },
+  { img: '/images/master/avatar-boyoqchi.png', label: "Bo'yoqchi" },
+  { img: '/images/master/avatar-tamir.png', label: "Ta'mirlash" },
+  { img: '/images/master/avatar-avto.png', label: 'Avto-xizmatlar' },
+  { img: '/images/master/avatar-mebel.png', label: 'Mebelchi' },
+  { img: '/images/master/avatar-boshqa.png', label: 'Boshqa xizmatlar' },
+];
+
+const mapAvatars = [
+  { src: '/images/master/map-1.png', pos: { top: '6%', left: '34%' }, dur: 4.0, delay: 0 },
+  { src: '/images/master/map-2.png', pos: { top: '24%', right: '6%' }, dur: 4.6, delay: 0.4 },
+  { src: '/images/master/map-3.png', pos: { bottom: '30%', left: '8%' }, dur: 5.0, delay: 0.8 },
+  { src: '/images/master/map-4.png', pos: { bottom: '6%', left: '40%' }, dur: 4.4, delay: 0.2 },
 ];
 
 const faqs = [
@@ -126,17 +133,6 @@ const faqs = [
   { q: '250 token qachon hisoblanadi?', a: "Tokenlar bosqichma-bosqich hisoblanadi: myID tasdiqlangach +150, profil to'ldirilgach +40, ish fotolari yuklangach +30 va birinchi 3 ta buyurtmadan so'ng +30." },
   { q: 'Tezkor Xizmat nima?', a: "Bu mijozning shoshilinch so'rovini eng yaqin va mos ustaga tezda yo'naltiruvchi xizmat." },
   { q: 'Referal tokenlarni qanday olish mumkin?', a: "Taklif havolangiz orqali ro'yxatdan o'tgan har bir usta uchun +10 token olasiz." },
-];
-
-const sphereAccents = [
-  'from-primary-500/15 to-teal-500/10 text-primary-500',
-  'from-amber-500/15 to-orange-500/10 text-amber-500',
-  'from-cyan-500/15 to-blue-500/10 text-cyan-500',
-  'from-violet-500/15 to-purple-500/10 text-violet-500',
-  'from-rose-500/15 to-pink-500/10 text-rose-500',
-  'from-emerald-500/15 to-green-500/10 text-emerald-500',
-  'from-indigo-500/15 to-blue-500/10 text-indigo-500',
-  'from-teal-500/15 to-primary-500/10 text-teal-500',
 ];
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -590,9 +586,43 @@ export default function MasterPage() {
             <p className="text-gray-500 mb-5">
               Mijozda favqulodda vaziyat yuz berganda, tizim eng yaqin ustalarga so&apos;rov yuboradi. Shoshilinch ishlar uchun mos: suv, svet, tezkor ta&apos;mir.
             </p>
-            <div className="rounded-2xl bg-gradient-to-br from-primary-50 to-teal-50 border border-primary-100 p-5 text-center mb-6">
-              <div className="text-3xl font-extrabold text-gray-900 tracking-widest tabular-nums">02:45</div>
-              <div className="text-xs text-primary-600 font-medium mt-1">Qoldi</div>
+            <div className="relative rounded-2xl bg-gradient-to-br from-primary-50 to-teal-50 border border-primary-100 overflow-hidden mb-6 h-56">
+              {/* map grid */}
+              <div className="absolute inset-0 opacity-[0.07]" style={{
+                backgroundImage: 'linear-gradient(rgba(2,189,198,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(2,189,198,0.7) 1px, transparent 1px)',
+                backgroundSize: '26px 26px',
+              }} />
+              {/* dotted connectors */}
+              <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                {[['41%','16%'], ['84%','33%'], ['15%','58%'], ['46%','82%']].map(([x, y], i) => (
+                  <line key={i} x1="50%" y1="50%" x2={x} y2={y} stroke="#02BDC6" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.5" />
+                ))}
+              </svg>
+              {/* center pin */}
+              <motion.img
+                src="/images/master/map-pin.png"
+                alt=""
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 object-contain z-10 drop-shadow"
+              />
+              {/* master avatars */}
+              {mapAvatars.map((a, i) => (
+                <motion.img
+                  key={i}
+                  src={a.src}
+                  alt=""
+                  style={a.pos}
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: a.dur, repeat: Infinity, ease: 'easeInOut', delay: a.delay }}
+                  className="absolute w-12 h-12 object-contain z-20 drop-shadow-md"
+                />
+              ))}
+              {/* timer card */}
+              <div className="absolute right-3 bottom-3 bg-white rounded-xl shadow-lg px-4 py-2 text-center z-30">
+                <div className="text-xl font-extrabold text-gray-900 tabular-nums leading-none">02:45</div>
+                <div className="text-[10px] text-primary-600 font-medium mt-0.5">Qoldi</div>
+              </div>
             </div>
             <a
               href="#"
@@ -625,48 +655,29 @@ export default function MasterPage() {
               </div>
               <p className="text-white/75">Ustalarni taklif qiling — birga o&apos;samiz va birga daromad qilamiz!</p>
 
-              {/* Hero gift */}
-              <div className="flex-grow flex items-center justify-center py-8">
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
+              {/* Referral masters */}
+              <div className="flex-grow flex items-center justify-center gap-2 sm:gap-4 py-6">
+                <motion.img
+                  src="/images/master/referral-left.png"
+                  alt=""
+                  animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="relative"
+                  className="w-28 sm:w-32 h-auto object-contain drop-shadow-xl"
+                />
+                <motion.div
+                  animate={{ x: [0, 6, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  className="text-primary-300 flex-shrink-0"
                 >
-                  {/* glow */}
-                  <div className="absolute inset-0 bg-primary-400/40 blur-2xl rounded-full scale-125" />
-                  {/* rotating ring */}
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-                    className="absolute -inset-4 rounded-full border border-dashed border-white/20"
-                  />
-                  {/* gift badge */}
-                  <div className="relative w-32 h-32 rounded-[2rem] bg-gradient-to-br from-primary-400 to-teal-500 flex items-center justify-center shadow-2xl shadow-primary-500/40 ring-4 ring-white/10">
-                    <Gift size={60} className="text-white" />
-                  </div>
-                  {/* floating accents */}
-                  <motion.div
-                    animate={{ y: [0, -6, 0], opacity: [0.7, 1, 0.7] }}
-                    transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute -top-3 -right-3 w-9 h-9 rounded-xl bg-accent-400 flex items-center justify-center shadow-lg text-gray-900"
-                  >
-                    <Coins size={18} />
-                  </motion.div>
-                  <motion.div
-                    animate={{ scale: [1, 1.25, 1], opacity: [0.6, 1, 0.6] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
-                    className="absolute -bottom-2 -left-4 text-accent-300"
-                  >
-                    <Sparkles size={22} />
-                  </motion.div>
-                  <motion.div
-                    animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut', delay: 1.1 }}
-                    className="absolute top-2 -left-6 text-primary-200"
-                  >
-                    <Sparkles size={14} />
-                  </motion.div>
+                  <ArrowRight size={40} strokeWidth={2.5} />
                 </motion.div>
+                <motion.img
+                  src="/images/master/referral-right.png"
+                  alt=""
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
+                  className="w-28 sm:w-32 h-auto object-contain drop-shadow-xl"
+                />
               </div>
 
               {/* token badge */}
@@ -733,25 +744,21 @@ export default function MasterPage() {
           </motion.div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
-            {spheres.map((sp, i) => {
-              const Icon = sp.icon;
-              const accent = sphereAccents[i % sphereAccents.length];
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={sphRef.inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.4, delay: i * 0.07 }}
-                  whileHover={{ y: -5 }}
-                  className="text-center"
-                >
-                  <div className={`h-24 rounded-2xl bg-gradient-to-br ${accent} flex items-center justify-center mb-3 border border-gray-100`}>
-                    <Icon size={34} />
-                  </div>
-                  <span className="text-sm font-semibold text-gray-700">{sp.label}</span>
-                </motion.div>
-              );
-            })}
+            {spheres.map((sp, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={sphRef.inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                whileHover={{ y: -5 }}
+                className="text-center group"
+              >
+                <div className="h-36 rounded-2xl bg-gradient-to-b from-gray-50 to-primary-50/40 border border-gray-100 flex items-end justify-center overflow-hidden mb-3 group-hover:shadow-md transition-all">
+                  <img src={sp.img} alt={sp.label} className="h-[92%] object-contain object-bottom drop-shadow-sm" />
+                </div>
+                <span className="text-sm font-semibold text-primary-600">{sp.label}</span>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
