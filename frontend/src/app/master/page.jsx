@@ -435,9 +435,9 @@ export default function MasterPage() {
         }} />
         {/* master illustration as backdrop */}
         <img
-          src="/images/master/master-hero.png"
+          src="/images/master/token-bg.png"
           alt=""
-          className="pointer-events-none select-none absolute right-0 bottom-0 -z-10 h-[95%] object-contain opacity-20"
+          className="pointer-events-none select-none absolute right-0 bottom-0 -z-10 h-[95%] object-contain opacity-25"
         />
         <div className="absolute -top-24 -left-24 -z-10 w-96 h-96 rounded-full bg-primary-500/20 blur-3xl" />
 
