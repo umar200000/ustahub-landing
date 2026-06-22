@@ -3,16 +3,59 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
-  HardHat, Star, Coins, ArrowRight, PlayCircle, Calendar, Users,
+  HardHat, Star, Coins, PlayCircle, Calendar, Users,
   Fingerprint, UserCog, Camera, PackageCheck, ShoppingBag, ImagePlus, UserCheck,
   Rocket, ShieldCheck, CheckCircle2, Zap, Handshake, Gift, Timer,
   BookOpen, Video, Newspaper, ChevronRight, Wrench, Sparkles, Paintbrush, Hammer,
   Car, Sofa, Package, Plus, Minus, ArrowLeft, Send, Home,
 } from 'lucide-react';
 
-// App store links (masters register via the UstaHub app)
-const APP_IOS = 'https://apps.apple.com/us/app/ustahub/id6767654671';
-const APP_ANDROID = 'https://play.google.com/store/apps/details?id=net.ustahub.client';
+// App store links (UstaHub Pro — the master app)
+const APP_IOS = 'https://apps.apple.com/us/app/ustahub-pro/id6767654801';
+const APP_ANDROID = 'https://play.google.com/store/apps/details?id=net.ustahub.master';
+
+// Reusable App Store + Google Play download buttons
+function StoreButtons({ className = '' }) {
+  return (
+    <div className={`flex flex-wrap gap-4 ${className}`}>
+      <motion.a
+        href={APP_IOS}
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.03, y: -2 }}
+        whileTap={{ scale: 0.97 }}
+        className="flex items-center gap-3 px-6 py-3.5 bg-white rounded-2xl hover:bg-gray-50 transition-colors shadow-lg"
+      >
+        <svg className="w-8 h-8 text-gray-900" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        <div className="text-left">
+          <p className="text-[10px] text-gray-500">Download on the</p>
+          <p className="text-sm font-semibold text-gray-900">App Store</p>
+        </div>
+      </motion.a>
+      <motion.a
+        href={APP_ANDROID}
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.03, y: -2 }}
+        whileTap={{ scale: 0.97 }}
+        className="flex items-center gap-3 px-6 py-3.5 bg-white rounded-2xl hover:bg-gray-50 transition-colors shadow-lg"
+      >
+        <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+          <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/>
+          <path d="M17.556 8.222L5.89.95a1.003 1.003 0 00-1.063-.029l9.58 9.58 3.15-2.28z" fill="#EA4335"/>
+          <path d="M17.556 15.778l-3.15-2.28-9.58 9.58c.33.187.737.2 1.063-.029l11.667-7.271z" fill="#34A853"/>
+          <path d="M20.997 12c0-.376-.126-.754-.372-1.063L17.556 8.222l-3.15 2.28 3.15 2.276 3.07-2.715A1.363 1.363 0 0020.996 12z" fill="#FBBC04"/>
+        </svg>
+        <div className="text-left">
+          <p className="text-[10px] text-gray-500">GET IT ON</p>
+          <p className="text-sm font-semibold text-gray-900">Google Play</p>
+        </div>
+      </motion.a>
+    </div>
+  );
+}
 
 // ─── Data (text identical to reference, design is ours) ──────────────────────
 
@@ -211,25 +254,14 @@ export default function MasterPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex flex-wrap gap-4 mb-8"
+                className="flex flex-col gap-4 mb-8"
               >
-                <motion.a
-                  href={APP_ANDROID}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="group flex items-center gap-2 px-7 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-2xl shadow-2xl shadow-primary-500/30 hover:shadow-primary-500/50 transition-all"
-                >
-                  <HardHat size={18} />
-                  Usta sifatida ro&apos;yxatdan o&apos;tish
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </motion.a>
+                <StoreButtons />
                 <motion.a
                   href="#tokens"
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex items-center gap-2 px-7 py-4 bg-white/10 text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 transition-all backdrop-blur-sm"
+                  className="self-start flex items-center gap-2 px-7 py-3.5 bg-white/10 text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 transition-all backdrop-blur-sm"
                 >
                   <PlayCircle size={18} />
                   Tokenlarni qanday olaman
@@ -261,7 +293,7 @@ export default function MasterPage() {
               className="hidden sm:flex justify-center lg:justify-end items-end"
             >
               <div className="relative flex items-end">
-                {/* Phone 1 - Services (front, larger) */}
+                {/* Phone 1 - Orders (front, larger) */}
                 <motion.div
                   animate={{ y: [0, -12, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
@@ -269,12 +301,12 @@ export default function MasterPage() {
                 >
                   <div className="w-[250px] h-[510px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[2.8rem] p-[9px] shadow-2xl border border-gray-700/50">
                     <div className="w-full h-full rounded-[2.3rem] overflow-hidden bg-white">
-                      <img src="/images/master-services.jpg" alt="UstaHub Usta — Xizmatlar" className="w-full h-full object-cover object-top" />
+                      <img src="/images/master-orders.jpg" alt="UstaHub Usta — Buyurtmalar" className="w-full h-full object-cover object-top" />
                     </div>
                   </div>
                 </motion.div>
 
-                {/* Phone 2 - Orders (behind, offset) */}
+                {/* Phone 2 - Services (behind, offset) */}
                 <motion.div
                   animate={{ y: [0, -8, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
@@ -282,7 +314,7 @@ export default function MasterPage() {
                 >
                   <div className="w-[220px] h-[450px] bg-gradient-to-b from-gray-700 to-gray-800 rounded-[2.5rem] p-[8px] shadow-xl border border-gray-600/50 opacity-95">
                     <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white">
-                      <img src="/images/master-orders.jpg" alt="UstaHub Usta — Buyurtmalar" className="w-full h-full object-cover object-top" />
+                      <img src="/images/master-services.jpg" alt="UstaHub Usta — Xizmatlar" className="w-full h-full object-cover object-top" />
                     </div>
                   </div>
                 </motion.div>
@@ -748,18 +780,7 @@ export default function MasterPage() {
                   Hozir ro&apos;yxatdan o&apos;ting, profilni 20-iyulgacha tayyorlang va 250 token oling.
                 </p>
               </div>
-              <motion.a
-                href={APP_ANDROID}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.04, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent-400 to-accent-500 text-gray-900 font-bold rounded-2xl shadow-2xl shadow-accent-500/30 whitespace-nowrap flex-shrink-0"
-              >
-                <HardHat size={18} />
-                Ro&apos;yxatdan o&apos;tish
-                <ArrowRight size={18} />
-              </motion.a>
+              <StoreButtons className="flex-shrink-0" />
             </div>
           </motion.div>
         </div>
