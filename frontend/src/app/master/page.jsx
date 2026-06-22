@@ -6,7 +6,7 @@ import {
   HardHat, Coins, PlayCircle, Calendar, Users,
   Rocket, CheckCircle2, Zap, Handshake,
   BookOpen, Video, Newspaper, ChevronRight,
-  Plus, Minus, Send, Home, MessageCircle, ArrowRight,
+  Plus, Minus, Send, Home, MessageCircle, ArrowRight, Download,
 } from 'lucide-react';
 
 // App store links (UstaHub Pro — the master app)
@@ -226,8 +226,8 @@ export default function MasterPage() {
               whileTap={{ scale: 0.97 }}
               className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-semibold rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all"
             >
-              <HardHat size={16} />
-              Usta bo&apos;lish
+              <Download size={16} />
+              Ilovani yuklab olish
             </motion.a>
           </div>
         </div>
@@ -261,10 +261,16 @@ export default function MasterPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6"
+                className="flex flex-wrap items-center gap-3 mb-6 justify-center lg:justify-start"
               >
-                <HardHat size={16} />
-                Ustalar uchun
+                <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.07] border border-white/10 text-sm text-gray-200">
+                  <Calendar size={16} className="text-primary-400" />
+                  <span className="font-semibold text-white">Launch: 20-iyul</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.07] border border-white/10 text-sm text-gray-200">
+                  <Users size={16} className="text-primary-400" />
+                  <span className="font-semibold text-white">Birinchi 1 000 usta</span>
+                </div>
               </motion.div>
 
               <motion.h1
@@ -297,7 +303,7 @@ export default function MasterPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex flex-wrap gap-4 mb-8"
+                className="flex flex-wrap gap-4 justify-center lg:justify-start"
               >
                 <motion.a
                   href="#download"
@@ -317,22 +323,6 @@ export default function MasterPage() {
                   <PlayCircle size={18} />
                   Tokenlarni qanday olaman
                 </motion.a>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.45 }}
-                className="flex flex-wrap items-center gap-3"
-              >
-                <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.07] border border-white/10 text-sm text-gray-200">
-                  <Calendar size={16} className="text-primary-400" />
-                  <span className="font-semibold text-white">Launch: 20-iyul</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.07] border border-white/10 text-sm text-gray-200">
-                  <Users size={16} className="text-primary-400" />
-                  <span className="font-semibold text-white">Birinchi 1 000 usta</span>
-                </div>
               </motion.div>
             </div>
 
@@ -405,7 +395,7 @@ export default function MasterPage() {
 
           <div className="relative">
             <div className="hidden lg:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-primary-200 via-teal-200 to-emerald-200" />
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {steps.map((step, i) => {
                 return (
                   <motion.div
@@ -437,25 +427,37 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ How to get tokens ═══ */}
-      <section id="tokens" ref={tokRef.ref} className="relative overflow-hidden py-20 bg-gray-50 scroll-mt-20">
-        <SectionDecor flip />
+      <section id="tokens" ref={tokRef.ref} className="relative overflow-hidden py-20 bg-gradient-to-br from-[#013d40] via-[#015558] to-[#013d40] scroll-mt-20">
+        {/* dotted texture */}
+        <div className="absolute inset-0 -z-10 opacity-[0.05]" style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)',
+          backgroundSize: '30px 30px',
+        }} />
+        {/* master illustration as backdrop */}
+        <img
+          src="/images/master/master-hero.png"
+          alt=""
+          className="pointer-events-none select-none absolute right-0 bottom-0 -z-10 h-[95%] object-contain opacity-20"
+        />
+        <div className="absolute -top-24 -left-24 -z-10 w-96 h-96 rounded-full bg-primary-500/20 blur-3xl" />
+
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={tokRef.inView ? { opacity: 1, y: 0 } : {}}
             className="text-center mb-12"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-100 text-accent-600 text-sm font-semibold mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-400 text-gray-900 text-sm font-semibold mb-4">
               <Coins size={15} />
               Bonus
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">250 tokenni qanday olish mumkin</h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">250 tokenni qanday olish mumkin</h2>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
               Bonus bosqichma-bosqich beriladi, shunda usta o&apos;z taraqqiyotini oson kuzatadi.
             </p>
           </motion.div>
 
-          <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4 lg:gap-2">
+          <div className="grid grid-cols-2 lg:flex lg:flex-row lg:items-center gap-4 lg:gap-2">
             {tokenRows.map((row, i) => (
               <Fragment key={i}>
                 <motion.div
@@ -492,7 +494,7 @@ export default function MasterPage() {
           >
             Nega 20-iyulgacha ro&apos;yxatdan o&apos;tish kerak
           </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             {deadlineFeats.map((f, i) => (
               <motion.div
                 key={i}
