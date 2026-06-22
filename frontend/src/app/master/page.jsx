@@ -4,9 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
   HardHat, Coins, PlayCircle, Calendar, Users,
-  Rocket, ShieldCheck, CheckCircle2, Zap, Handshake, Gift, Timer,
+  Rocket, CheckCircle2, Zap, Handshake, Gift,
   BookOpen, Video, Newspaper, ChevronRight, Wrench, Sparkles, Paintbrush, Hammer,
-  Car, Sofa, Package, Plus, Minus, Send, Home, Briefcase, Repeat, MessageCircle, ArrowRight,
+  Car, Sofa, Package, Plus, Minus, Send, Home, MessageCircle, ArrowRight,
 } from 'lucide-react';
 
 // App store links (UstaHub Pro — the master app)
@@ -82,10 +82,10 @@ const tokenRows = [
 ];
 
 const deadlineFeats = [
-  { icon: Rocket, title: 'Ishga tushishga tayyor profil', desc: 'Profilingiz mijozlar kelishiga tayyor bo\'ladi.' },
-  { icon: ShieldCheck, title: 'myID tufayli yuqori ishonch', desc: 'Tekshirilgan ustalar ko\'proq ishonch uyg\'otadi.' },
-  { icon: Users, title: "UstaHub ustalarining birinchi to'lqini", desc: 'Birinchilar qatorida ko\'proq buyurtma oling.' },
-  { icon: Coins, title: "250 token boshlang'ich bonus", desc: 'Bonus birinchi buyurtmalarni olishga yordam beradi.' },
+  { img: '/images/master/benefit-ready.png', title: 'Ishga tushishga tayyor profil', desc: "Profilingiz mijozlar kelishiga tayyor bo'ladi." },
+  { img: '/images/master/benefit-shield.png', title: 'myID tufayli yuqori ishonch', desc: "Tekshirilgan ustalar ko'proq ishonch uyg'otadi." },
+  { img: '/images/master/benefit-wave.png', title: "UstaHub ustalarining birinchi to'lqini", desc: "Birinchilar qatorida ko'proq buyurtma oling." },
+  { img: '/images/master/benefit-coins.png', title: "250 token boshlang'ich bonus", desc: "Bonus birinchi buyurtmalarni olishga yordam beradi." },
 ];
 
 const tokenInfo = [
@@ -96,10 +96,10 @@ const tokenInfo = [
 ];
 
 const requestTypes = [
-  { icon: Wrench, title: 'Mayda ishlar', desc: 'Maishiy vazifalar va kichik ta\'mirlar' },
-  { icon: Zap, title: 'Tezkor Xizmat', desc: 'Yoningizdagi shoshilinch chaqiruvlar' },
-  { icon: Briefcase, title: 'Katta buyurtmalar', desc: 'Hajmli ishlar va loyihalar' },
-  { icon: Repeat, title: 'Takroriy chaqiruv', desc: 'Mijoz sizga yana murojaat qiladi' },
+  { img: '/images/master/req-small.png', title: 'Mayda ishlar', desc: "Maishiy vazifalar va kichik ta'mirlar" },
+  { img: '/images/master/req-tezkor.png', title: 'Tezkor Xizmat', desc: 'Yoningizdagi shoshilinch chaqiruvlar' },
+  { img: '/images/master/req-big.png', title: 'Katta buyurtmalar', desc: 'Hajmli ishlar va loyihalar' },
+  { img: '/images/master/req-repeat.png', title: 'Takroriy chaqiruv', desc: 'Mijoz sizga yana murojaat qiladi' },
 ];
 
 const guides = [
@@ -469,54 +469,39 @@ export default function MasterPage() {
         </div>
       </section>
 
-      {/* ═══ Deadline banner ═══ */}
-      <section ref={dlRef.ref} className="py-12 bg-gray-50">
+      {/* ═══ Deadline ═══ */}
+      <section ref={dlRef.ref} className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
             animate={dlRef.inView ? { opacity: 1, y: 0 } : {}}
-            className="relative rounded-3xl bg-gradient-to-br from-[#013d40] via-[#015558] to-[#013d40] p-8 sm:p-12 overflow-hidden"
+            className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-12"
           >
-            <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-primary-500/15 blur-3xl" />
-            <div className="absolute inset-0 opacity-[0.04]" style={{
-              backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)',
-              backgroundSize: '32px 32px',
-            }} />
-            <div className="absolute right-8 top-8 hidden sm:block">
-              <Timer size={56} className="text-white/20" />
-            </div>
-
-            <div className="relative">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-10 max-w-2xl">
-                Nega 20-iyulgacha ro&apos;yxatdan o&apos;tish kerak
-              </h2>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                {deadlineFeats.map((f, i) => {
-                  const Icon = f.icon;
-                  return (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={dlRef.inView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
-                      className="flex flex-col gap-3"
-                    >
-                      <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
-                        <Icon size={20} className="text-primary-300" />
-                      </div>
-                      <h3 className="text-sm font-bold text-white leading-snug">{f.title}</h3>
-                      <p className="text-sm text-white/70 leading-snug">{f.desc}</p>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
+            Nega 20-iyulgacha ro&apos;yxatdan o&apos;tish kerak
+          </motion.h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {deadlineFeats.map((f, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={dlRef.inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.1 + i * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="flex items-start gap-4 bg-gray-50 border border-gray-100 rounded-2xl p-5 hover:shadow-md transition-all"
+              >
+                <img src={f.img} alt="" className="w-12 h-12 object-contain flex-shrink-0" />
+                <div className="min-w-0">
+                  <h3 className="font-bold text-gray-900 leading-snug mb-1">{f.title}</h3>
+                  <p className="text-sm text-gray-500 leading-snug">{f.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ═══ What are tokens + Request types ═══ */}
-      <section ref={infoRef.ref} className="py-20 bg-white">
+      <section ref={infoRef.ref} className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-6">
           {/* What are tokens */}
           <motion.div
@@ -530,19 +515,26 @@ export default function MasterPage() {
               </div>
               <h2 className="text-2xl font-bold text-gray-900">Token nima</h2>
             </div>
-            <div className="space-y-4">
-              {tokenInfo.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={infoRef.inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="flex items-start gap-3"
-                >
-                  <CheckCircle2 size={20} className="text-primary-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">{item}</span>
-                </motion.div>
-              ))}
+            <div className="flex items-center gap-6">
+              <img
+                src="/images/master/coin-stack.png"
+                alt=""
+                className="hidden md:block w-28 h-28 object-contain flex-shrink-0 drop-shadow-md"
+              />
+              <div className="space-y-4">
+                {tokenInfo.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={infoRef.inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
+                    className="flex items-start gap-3"
+                  >
+                    <CheckCircle2 size={20} className="text-primary-500 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">{item}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -554,28 +546,25 @@ export default function MasterPage() {
           >
             <h2 className="text-2xl font-bold text-gray-900 text-center lg:text-left mb-6">UstaHub&apos;dagi so&apos;rov turlari</h2>
             <div className="space-y-3">
-              {requestTypes.map((r, i) => {
-                const Icon = r.icon;
-                return (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={infoRef.inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
-                    whileHover={{ x: 3 }}
-                    className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md hover:border-primary-200 transition-all"
-                  >
-                    <div className="w-11 h-11 rounded-xl bg-primary-50 flex items-center justify-center flex-shrink-0">
-                      <Icon size={20} className="text-primary-500" />
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="font-bold text-gray-900">{r.title}</h3>
-                      <p className="text-sm text-gray-500">{r.desc}</p>
-                    </div>
-                    <ChevronRight size={18} className="ml-auto text-gray-300 flex-shrink-0" />
-                  </motion.div>
-                );
-              })}
+              {requestTypes.map((r, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={infoRef.inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
+                  whileHover={{ x: 3 }}
+                  className="flex items-center gap-4 bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md hover:border-primary-200 transition-all"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center flex-shrink-0 p-2">
+                    <img src={r.img} alt="" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-bold text-gray-900">{r.title}</h3>
+                    <p className="text-sm text-gray-500">{r.desc}</p>
+                  </div>
+                  <ChevronRight size={18} className="ml-auto text-gray-300 flex-shrink-0" />
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
