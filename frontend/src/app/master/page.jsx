@@ -433,11 +433,11 @@ export default function MasterPage() {
           backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)',
           backgroundSize: '30px 30px',
         }} />
-        {/* master illustration as backdrop */}
+        {/* master illustration as backdrop (left) */}
         <img
           src="/images/master/token-bg.png"
           alt=""
-          className="pointer-events-none select-none absolute right-0 bottom-0 -z-10 h-[95%] object-contain opacity-25"
+          className="pointer-events-none select-none hidden lg:block absolute left-0 bottom-0 -z-10 h-[90%] object-contain object-left-bottom opacity-90 drop-shadow-2xl"
         />
         <div className="absolute -top-24 -left-24 -z-10 w-96 h-96 rounded-full bg-primary-500/20 blur-3xl" />
 
