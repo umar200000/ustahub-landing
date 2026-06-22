@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
@@ -427,52 +427,60 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ How to get tokens ═══ */}
-      <section id="tokens" ref={tokRef.ref} className="relative isolate overflow-hidden py-20 bg-white scroll-mt-20">
-        {/* master illustration as backdrop (left) */}
-        <img
-          src="/images/master/token-bg.png"
-          alt=""
-          className="pointer-events-none select-none hidden lg:block absolute left-0 bottom-0 -z-10 h-[92%] object-contain object-left-bottom"
-        />
-
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="tokens" ref={tokRef.ref} className="relative isolate overflow-hidden py-20 bg-gradient-to-br from-gray-50 via-white to-primary-50/50 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+          {/* Left: master illustration */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={tokRef.inView ? { opacity: 1, y: 0 } : {}}
-            className="text-center mb-12"
+            initial={{ opacity: 0, x: -40 }}
+            animate={tokRef.inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="relative hidden lg:flex justify-center items-end"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-100 text-accent-600 text-sm font-semibold mb-4">
-              <Coins size={15} />
-              Bonus
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">250 tokenni qanday olish mumkin</h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Bonus bosqichma-bosqich beriladi, shunda usta o&apos;z taraqqiyotini oson kuzatadi.
-            </p>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[105%] aspect-square rounded-full bg-gradient-to-br from-primary-500/10 to-teal-500/10" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[80%] aspect-square rounded-full bg-primary-400/15 blur-3xl" />
+            <img
+              src="/images/master/token-bg.png"
+              alt="UstaHub Pro usta"
+              className="w-full max-w-sm h-auto object-contain drop-shadow-2xl"
+            />
           </motion.div>
 
-          <div className="grid grid-cols-2 lg:flex lg:flex-row lg:items-center gap-4 lg:gap-2">
-            {tokenRows.map((row, i) => (
-              <Fragment key={i}>
+          {/* Right: heading + 2x2 cards */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={tokRef.inView ? { opacity: 1, y: 0 } : {}}
+              className="text-center lg:text-left mb-8"
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-100 text-accent-600 text-sm font-semibold mb-4">
+                <Coins size={15} />
+                Bonus
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">250 tokenni qanday olish mumkin</h2>
+              <p className="text-lg text-gray-500">
+                Bonus bosqichma-bosqich beriladi, shunda usta o&apos;z taraqqiyotini oson kuzatadi.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-2 gap-4">
+              {tokenRows.map((row, i) => (
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={tokRef.inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: i * 0.12 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                   whileHover={{ y: -4 }}
-                  className="flex-1 flex flex-col items-center text-center bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all"
+                  className="flex flex-col items-center text-center bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-lg hover:shadow-primary-500/5 transition-all"
                 >
-                  <div className="w-20 h-20 rounded-2xl bg-primary-50 flex items-center justify-center mb-4">
-                    <img src={row.img} alt="" className="w-12 h-12 object-contain" />
+                  <div className="w-16 h-16 rounded-2xl bg-primary-50 flex items-center justify-center mb-3">
+                    <img src={row.img} alt="" className="w-10 h-10 object-contain" />
                   </div>
-                  <div className="text-4xl font-extrabold text-primary-600 leading-none">{row.amount}</div>
-                  <div className="text-sm font-semibold text-gray-400 mt-1.5 mb-3">tokenlar</div>
-                  <p className="text-sm text-gray-500 leading-snug">{row.desc}</p>
+                  <div className="text-3xl font-extrabold text-primary-600 leading-none">{row.amount}</div>
+                  <div className="text-xs font-semibold text-gray-400 mt-1 mb-2">tokenlar</div>
+                  <p className="text-xs text-gray-500 leading-snug">{row.desc}</p>
                 </motion.div>
-                {i < tokenRows.length - 1 && (
-                  <ArrowRight size={26} className="hidden lg:block text-primary-300 flex-shrink-0" strokeWidth={2.5} />
-                )}
-              </Fragment>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
