@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
-  HardHat, Star, ClipboardList, Coins, ArrowRight, PlayCircle, Calendar, Users,
+  HardHat, Star, Coins, ArrowRight, PlayCircle, Calendar, Users,
   Fingerprint, UserCog, Camera, PackageCheck, ShoppingBag, ImagePlus, UserCheck,
   Rocket, ShieldCheck, CheckCircle2, Zap, Handshake, Gift, Timer,
   BookOpen, Video, Newspaper, ChevronRight, Wrench, Sparkles, Paintbrush, Hammer,
@@ -253,53 +253,77 @@ export default function MasterPage() {
               </motion.div>
             </div>
 
-            {/* Right - phone mockup */}
+            {/* Right - two phone mockups with master app screenshots */}
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex justify-center lg:justify-end"
+              className="hidden sm:flex justify-center lg:justify-end items-end"
             >
-              <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                className="relative"
-              >
-                <div className="absolute inset-0 -z-10 bg-primary-500/20 blur-[100px] rounded-full" />
-                <div className="w-[280px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[2.6rem] p-[10px] shadow-2xl border border-gray-700/50">
-                  <div className="bg-white rounded-[2.1rem] p-5">
-                    <div className="flex items-center gap-2 mb-5">
-                      <img src="/logo.png" alt="UstaHub" className="w-7 h-7 rounded-lg object-contain" />
-                      <span className="font-bold text-gray-900">Usta<span className="text-primary-500">Hub</span></span>
-                    </div>
-
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2 py-2.5 text-sm text-gray-500 border-b border-gray-100">
-                        <HardHat size={16} className="text-primary-500" />
-                        <span className="text-gray-700 font-medium">Usta</span>
-                      </div>
-                      <div className="flex items-center gap-2 py-2.5 text-sm text-gray-500 border-b border-gray-100">
-                        <Star size={16} className="text-accent-400 fill-accent-400" />
-                        Reyting
-                        <span className="ml-auto font-bold text-gray-900">4.9</span>
-                      </div>
-                      <div className="flex items-center gap-2 py-2.5 text-sm text-gray-500">
-                        <ClipboardList size={16} className="text-primary-500" />
-                        Buyurtmalar
-                        <span className="ml-auto font-bold text-gray-900">32</span>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 rounded-2xl bg-gradient-to-br from-primary-50 to-teal-50 p-4 text-center border border-primary-100">
-                      <div className="flex items-center justify-center gap-1.5 text-sm font-semibold text-primary-600">
-                        <Coins size={15} />
-                        Tokenlar
-                      </div>
-                      <div className="text-4xl font-extrabold text-primary-600 mt-1">250</div>
+              <div className="relative flex items-end">
+                {/* Phone 1 - Services (front, larger) */}
+                <motion.div
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="relative z-20"
+                >
+                  <div className="w-[250px] h-[510px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-[2.8rem] p-[9px] shadow-2xl border border-gray-700/50">
+                    <div className="w-full h-full rounded-[2.3rem] overflow-hidden bg-white">
+                      <img src="/images/master-services.jpg" alt="UstaHub Usta — Xizmatlar" className="w-full h-full object-cover object-top" />
                     </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+
+                {/* Phone 2 - Orders (behind, offset) */}
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                  className="relative z-10 -ml-14 mb-8"
+                >
+                  <div className="w-[220px] h-[450px] bg-gradient-to-b from-gray-700 to-gray-800 rounded-[2.5rem] p-[8px] shadow-xl border border-gray-600/50 opacity-95">
+                    <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white">
+                      <img src="/images/master-orders.jpg" alt="UstaHub Usta — Buyurtmalar" className="w-full h-full object-cover object-top" />
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Floating token card */}
+                <motion.div
+                  animate={{ y: [0, -10, 0], x: [0, 5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute -left-8 top-16 bg-white rounded-2xl p-4 shadow-2xl z-30"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-400 to-accent-500 flex items-center justify-center">
+                      <Coins size={20} className="text-white" />
+                    </div>
+                    <div>
+                      <p className="text-lg font-extrabold text-gray-900 leading-none">250</p>
+                      <p className="text-[10px] text-gray-400 mt-0.5">Tokenlar</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Floating rating card */}
+                <motion.div
+                  animate={{ y: [0, 10, 0], x: [0, -5, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                  className="absolute -right-4 bottom-24 bg-white rounded-2xl p-4 shadow-2xl z-30"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-9 h-9 rounded-full bg-accent-50 flex items-center justify-center">
+                      <Star size={16} className="text-accent-500 fill-accent-500" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-gray-800">4.9 / 5.0</p>
+                      <p className="text-[10px] text-gray-400">Usta reytingi</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Glow behind phones */}
+                <div className="absolute inset-0 -z-10 bg-primary-500/15 blur-[120px] rounded-full" />
+              </div>
             </motion.div>
           </div>
         </div>
