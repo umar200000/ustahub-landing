@@ -203,9 +203,7 @@ export default function MasterPage() {
               Asosiy sahifa
             </a>
             <motion.a
-              href={APP_ANDROID}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#download"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-semibold rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 transition-all"
@@ -281,14 +279,22 @@ export default function MasterPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex flex-col gap-4 mb-8"
+                className="flex flex-wrap gap-4 mb-8"
               >
-                <StoreButtons />
+                <motion.a
+                  href="#download"
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center gap-2 px-7 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-2xl shadow-2xl shadow-primary-500/30 hover:shadow-primary-500/50 transition-all"
+                >
+                  <HardHat size={18} />
+                  Usta sifatida ro&apos;yxatdan o&apos;tish
+                </motion.a>
                 <motion.a
                   href="#tokens"
                   whileHover={{ scale: 1.03, y: -2 }}
                   whileTap={{ scale: 0.97 }}
-                  className="self-start flex items-center gap-2 px-7 py-3.5 bg-white/10 text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 transition-all backdrop-blur-sm"
+                  className="flex items-center gap-2 px-7 py-4 bg-white/10 text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 transition-all backdrop-blur-sm"
                 >
                   <PlayCircle size={18} />
                   Tokenlarni qanday olaman
@@ -863,7 +869,7 @@ export default function MasterPage() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section ref={ctaRef.ref} className="py-20 bg-white">
+      <section id="download" ref={ctaRef.ref} className="py-20 bg-white scroll-mt-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
