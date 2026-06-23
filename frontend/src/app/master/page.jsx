@@ -334,7 +334,7 @@ export default function MasterPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="hidden sm:flex justify-center lg:justify-end"
             >
-              <div className="relative w-[330px] lg:w-[440px] aspect-square flex items-end justify-center">
+              <div className="relative w-[360px] lg:w-[540px] aspect-square flex items-end justify-center">
                 {/* Circular halo backdrop */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[104%] aspect-square rounded-full bg-gradient-to-br from-primary-500/15 to-teal-500/10" />
                 <motion.div
@@ -351,7 +351,7 @@ export default function MasterPage() {
                   alt="UstaHub Pro usta"
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="relative z-10 h-[96%] w-auto object-contain object-bottom drop-shadow-2xl"
+                  className="relative z-10 h-[104%] w-auto object-contain object-bottom drop-shadow-2xl"
                 />
 
                 {/* Floating service icons on a circle */}
