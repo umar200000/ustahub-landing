@@ -72,14 +72,14 @@ function SectionDecor({ flip = false }) {
 
 // ─── Data (text identical to reference, design is ours) ──────────────────────
 
-// Icons evenly placed on a circle (left/top % within a square container)
+// Icons on a circle around the master, leaving the bottom-center clear
 const heroIcons = [
-  { src: '/images/master/icon-coin.png', left: '50%', top: '3%', dy: -8, dur: 4.6, delay: 0.4 },
-  { src: '/images/master/icon-paint-roller.png', left: '90%', top: '27%', dy: -12, dur: 5.0, delay: 0.8 },
-  { src: '/images/master/icon-cleaning.png', left: '90%', top: '73%', dy: 10, dur: 4.4, delay: 0.2 },
-  { src: '/images/master/icon-car.png', left: '50%', top: '97%', dy: -9, dur: 4.8, delay: 1.0 },
-  { src: '/images/master/icon-tools.png', left: '10%', top: '73%', dy: 9, dur: 5.2, delay: 0.6 },
-  { src: '/images/master/icon-faucet.png', left: '10%', top: '27%', dy: -10, dur: 4.0, delay: 0.0 },
+  { src: '/images/master/icon-faucet.png', left: '27%', top: '10%', dy: -10, dur: 4.0, delay: 0.0 },
+  { src: '/images/master/icon-coin.png', left: '73%', top: '10%', dy: -8, dur: 4.6, delay: 0.4 },
+  { src: '/images/master/icon-paint-roller.png', left: '95%', top: '42%', dy: -12, dur: 5.0, delay: 0.8 },
+  { src: '/images/master/icon-cleaning.png', left: '85%', top: '80%', dy: 10, dur: 4.4, delay: 0.2 },
+  { src: '/images/master/icon-tools.png', left: '5%', top: '42%', dy: 9, dur: 5.2, delay: 0.6 },
+  { src: '/images/master/icon-car.png', left: '15%', top: '80%', dy: -9, dur: 4.8, delay: 1.0 },
 ];
 
 const steps = [
