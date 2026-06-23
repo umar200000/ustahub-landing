@@ -436,6 +436,15 @@ export default function MasterPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Left: heading + 2x2 cards */}
           <div>
+            {/* mobile-only master illustration */}
+            <motion.img
+              src="/images/master/token-bg.png"
+              alt="UstaHub Pro usta"
+              initial={{ opacity: 0, y: 20 }}
+              animate={tokRef.inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5 }}
+              className="lg:hidden w-44 h-auto object-contain mx-auto mb-6 drop-shadow-xl"
+            />
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={tokRef.inView ? { opacity: 1, y: 0 } : {}}
