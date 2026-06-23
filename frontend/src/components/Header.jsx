@@ -142,12 +142,26 @@ export default function Header({ settings = {}, lang = 'uz', onLangChange }) {
             </div>
 
             {/* Mobile menu toggle */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className={`lg:hidden p-2 rounded-lg ${scrolled ? 'text-gray-700' : 'text-white'}`}
-            >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Mobile right side: visible "Usta bo'lish" + menu toggle */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <a
+                href="/master"
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold border transition-all ${
+                  scrolled
+                    ? 'bg-primary-500 text-white border-primary-500'
+                    : 'bg-white/15 text-white border-white/30 backdrop-blur-sm'
+                }`}
+              >
+                <HardHat size={15} />
+                {lang === 'ru' ? 'Мастер' : lang === 'en' ? 'Master' : "Usta bo'lish"}
+              </a>
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className={`p-2 rounded-lg ${scrolled ? 'text-gray-700' : 'text-white'}`}
+              >
+                {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
       </motion.header>
