@@ -72,13 +72,14 @@ function SectionDecor({ flip = false }) {
 
 // ─── Data (text identical to reference, design is ours) ──────────────────────
 
+// Icons evenly placed on a circle (left/top % within a square container)
 const heroIcons = [
-  { src: '/images/master/icon-faucet.png', pos: { top: '13%', left: '-13%' }, dy: -10, dur: 4.0, delay: 0.0 },
-  { src: '/images/master/icon-coin.png', pos: { top: '-2%', right: '2%' }, dy: -8, dur: 4.6, delay: 0.4 },
-  { src: '/images/master/icon-paint-roller.png', pos: { top: '30%', right: '-13%' }, dy: -12, dur: 5.0, delay: 0.8 },
-  { src: '/images/master/icon-cleaning.png', pos: { top: '54%', right: '-10%' }, dy: 10, dur: 4.4, delay: 0.2 },
-  { src: '/images/master/icon-tools.png', pos: { bottom: '20%', left: '-11%' }, dy: 9, dur: 5.2, delay: 0.6 },
-  { src: '/images/master/icon-car.png', pos: { bottom: '7%', right: '-5%' }, dy: -9, dur: 4.8, delay: 1.0 },
+  { src: '/images/master/icon-coin.png', left: '50%', top: '3%', dy: -8, dur: 4.6, delay: 0.4 },
+  { src: '/images/master/icon-paint-roller.png', left: '90%', top: '27%', dy: -12, dur: 5.0, delay: 0.8 },
+  { src: '/images/master/icon-cleaning.png', left: '90%', top: '73%', dy: 10, dur: 4.4, delay: 0.2 },
+  { src: '/images/master/icon-car.png', left: '50%', top: '97%', dy: -9, dur: 4.8, delay: 1.0 },
+  { src: '/images/master/icon-tools.png', left: '10%', top: '73%', dy: 9, dur: 5.2, delay: 0.6 },
+  { src: '/images/master/icon-faucet.png', left: '10%', top: '27%', dy: -10, dur: 4.0, delay: 0.0 },
 ];
 
 const steps = [
@@ -333,16 +334,16 @@ export default function MasterPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="hidden sm:flex justify-center lg:justify-end"
             >
-              <div className="relative w-[300px] lg:w-[380px]">
+              <div className="relative w-[330px] lg:w-[440px] aspect-square flex items-end justify-center">
                 {/* Circular halo backdrop */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] aspect-square rounded-full bg-gradient-to-br from-primary-500/15 to-teal-500/10" />
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[104%] aspect-square rounded-full bg-gradient-to-br from-primary-500/15 to-teal-500/10" />
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[145%] aspect-square rounded-full border border-dashed border-white/10"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[96%] aspect-square rounded-full border border-dashed border-white/15"
                 />
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] aspect-square rounded-full border border-white/10" />
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] aspect-square rounded-full bg-primary-500/20 blur-[90px]" />
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] aspect-square rounded-full border border-white/10" />
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[75%] aspect-square rounded-full bg-primary-500/20 blur-[90px]" />
 
                 {/* Master illustration */}
                 <motion.img
@@ -350,20 +351,24 @@ export default function MasterPage() {
                   alt="UstaHub Pro usta"
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
+                  className="relative z-10 h-[96%] w-auto object-contain object-bottom drop-shadow-2xl"
                 />
 
-                {/* Floating service icons */}
+                {/* Floating service icons on a circle */}
                 {heroIcons.map((ic, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    animate={{ y: [0, ic.dy, 0] }}
-                    transition={{ duration: ic.dur, repeat: Infinity, ease: 'easeInOut', delay: ic.delay }}
-                    style={ic.pos}
-                    className="absolute z-20 w-14 h-14 lg:w-16 lg:h-16 rounded-2xl bg-white shadow-xl shadow-black/25 flex items-center justify-center p-2.5"
+                    style={{ left: ic.left, top: ic.top }}
+                    className="absolute z-20 -translate-x-1/2 -translate-y-1/2"
                   >
-                    <img src={ic.src} alt="" className="w-full h-full object-contain" />
-                  </motion.div>
+                    <motion.div
+                      animate={{ y: [0, ic.dy, 0] }}
+                      transition={{ duration: ic.dur, repeat: Infinity, ease: 'easeInOut', delay: ic.delay }}
+                      className="w-14 h-14 lg:w-16 lg:h-16 rounded-2xl bg-white shadow-xl shadow-black/25 flex items-center justify-center p-2.5"
+                    >
+                      <img src={ic.src} alt="" className="w-full h-full object-contain" />
+                    </motion.div>
+                  </div>
                 ))}
               </div>
             </motion.div>
